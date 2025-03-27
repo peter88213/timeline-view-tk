@@ -28,65 +28,65 @@ DATA_TABLE = [
     ['sc10', 'TlvSection Ten (no data)', '', '', '', '', '', '', ''],
     ['', '', '', '2024-07-13', '', '0', '', '', ''],
 ]
-TEST_SECTIONS = dict(
-    sc1=TlvSection(
+TEST_SECTIONS = {
+    'sc1': TlvSection(
         title='TlvSection 5',
         scDate='2024-07-14',
         scTime='18:56',
         lastsMinutes='20'
         ),
-    sc2=TlvSection(
+    'sc2': TlvSection(
         title='The second event',
         scDate='2024-07-14',
         scTime='14:15',
         lastsHours='2'
         ),
-    sc3=TlvSection(
+    'sc3':TlvSection(
         title='TlvSection 3',
         scDate='2024-07-14',
         scTime='18:15',
         lastsMinutes='2'
         ),
-    sc4=TlvSection(
+    'sc4':TlvSection(
         title='TlvSection six (no time)',
         scDate='2024-07-14',
         ),
-    sc5=TlvSection(
+    'sc5':TlvSection(
         title='TlvSection 4',
         scDate='2024-07-14',
         scTime='18:16',
         lastsMinutes='20'
         ),
-    sc6=TlvSection(
+    'sc6':TlvSection(
         title='TlvSection 1',
         scDate='2024-07-14',
         scTime='13:00',
         lastsHours='1',
         lastsMinutes='30',
         ),
-    sc7=TlvSection(
+    'sc7':TlvSection(
         title='TlvSection Seven (second day)',
         day='2',
         scTime='13:00',
         lastsHours='1',
         lastsMinutes='30',
         ),
-    sc8=TlvSection(
+    'sc8':TlvSection(
         title='TlvSection Eight (second day, no time)',
         day='2',
         lastsHours='1',
         lastsMinutes='30',
         ),
-    sc9=TlvSection(
+    'sc9':TlvSection(
         title='TlvSection Nine (time only)',
         scTime='18:16',
         lastsHours='1',
         lastsMinutes='30',
         ),
-    sc10=TlvSection(
+    'sc10':TlvSection(
         title='TlvSection Ten (no data)',
         ),
-)
+}
 
 
 class TestCsvReader(unittest.TestCase):

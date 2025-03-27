@@ -5,7 +5,8 @@ A timeline viewer programmed with Python, using tkinter.
 ![Screenshot](docs/Screenshots/screen01.png)
 
 The *nvtlview* class library provides the *tlv* widget that is addressed via its controller.
-*timeline_viewer* is a simple application with a menu and a toolbar. 
+
+*Timeline_viewer* is a simple application with a menu and a toolbar. 
 
 - The application reads the timeline data from a csv file and displays it on a resizable window.
 - Events can be defined with a specific date or with an unspecific day.

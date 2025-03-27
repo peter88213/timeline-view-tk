@@ -1,0 +1,11 @@
+Goofy,Title,Desc,Date,Time,Day,LastsDays,LastsHours,LastsMinutes
+sc1,TlvSection 5,,2024-07-14,18:56,,,,20
+sc2,The second event,,2024-07-14,14:15,,,2,
+sc3,TlvSection 3,,2024-07-14,18:15,,,,2
+sc4,TlvSection six (no time),,2024-07-14,,,,,
+sc5,TlvSection 4,,2024-07-14,18:16,,,,20
+sc6,TlvSection 1,,2024-07-14,13:00,,,1,30
+sc7,TlvSection Seven (second day),,,13:00,2,,1,30
+sc8,"TlvSection Eight (second day, no time)",,,,2,,1,30
+sc9,TlvSection Nine (time only),,,18:16,,,1,30
+sc10,TlvSection Ten (no data),,,,,,,

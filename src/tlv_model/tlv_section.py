@@ -13,6 +13,7 @@ class TlvSection:
     def __init__(self,
             on_element_change=None,
             title=None,
+            desc=None,
             scType=0,
             scDate=None,
             scTime=None,
@@ -26,6 +27,7 @@ class TlvSection:
         else:
             self.on_element_change = on_element_change
         self._title = title
+        self._desc = desc
         self._scType = scType
         try:
             newDate = date.fromisoformat(scDate)
@@ -49,6 +51,8 @@ class TlvSection:
 
     @scType.setter
     def scType(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == int
         if self._scType != newVal:
             self._scType = newVal
             self.on_element_change()
@@ -59,8 +63,22 @@ class TlvSection:
 
     @title.setter
     def title(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._title != newVal:
             self._title = newVal
+            self.on_element_change()
+
+    @property
+    def desc(self):
+        return self._desc
+
+    @desc.setter
+    def desc(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
+        if self._desc != newVal:
+            self._desc = newVal
             self.on_element_change()
 
     @property
@@ -70,6 +88,8 @@ class TlvSection:
 
     @date.setter
     def date(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._date != newVal:
             if not newVal:
                 self._date = None
@@ -109,6 +129,8 @@ class TlvSection:
 
     @time.setter
     def time(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._time != newVal:
             self._time = newVal
             self.on_element_change()
@@ -119,6 +141,8 @@ class TlvSection:
 
     @day.setter
     def day(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._day != newVal:
             self._day = newVal
             self.on_element_change()
@@ -129,6 +153,8 @@ class TlvSection:
 
     @lastsMinutes.setter
     def lastsMinutes(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._lastsMinutes != newVal:
             self._lastsMinutes = newVal
             self.on_element_change()
@@ -139,6 +165,8 @@ class TlvSection:
 
     @lastsHours.setter
     def lastsHours(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._lastsHours != newVal:
             self._lastsHours = newVal
             self.on_element_change()
@@ -149,6 +177,8 @@ class TlvSection:
 
     @lastsDays.setter
     def lastsDays(self, newVal):
+        if newVal is not None:
+            assert type(newVal) == str
         if self._lastsDays != newVal:
             self._lastsDays = newVal
             self.on_element_change()

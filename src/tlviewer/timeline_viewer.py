@@ -52,6 +52,7 @@ class TimelineViewer(TlviewerCommands):
             self.mdl,
             mainWindow,
             LOCALIZE_DATE,
+            self.open_section,
             settings,
             )
         self.mdl.add_observer(self.tlvCtrl)

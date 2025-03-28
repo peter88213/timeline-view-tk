@@ -69,6 +69,9 @@ class TlviewerCommands:
     def on_quit(self, event=None):
         sys.exit(0)
 
+    def open_section(self, scId):
+        print(scId)
+
     def open_project(self, event=None):
         if self.prjFilePath:
             initDir = os.path.dirname(self.prjFilePath)

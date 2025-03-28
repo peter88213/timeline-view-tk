@@ -74,9 +74,6 @@ class TimelineViewer(TlviewerCommands):
         self.mainMenu.enable_menu()
         self.toolbar.enable_menu()
 
-    def enable_undo_button(self, event=None):
-        self.toolbar.undoButton.config(state='normal')
-
     def read_data(self, filePath):
         if self.prjFilePath is not None:
             self.close_project()

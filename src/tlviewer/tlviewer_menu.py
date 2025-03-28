@@ -6,6 +6,8 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from nvtlview.tlv_locale import _
 import tkinter as tk
+from nvtlview.platform.platform_settings import KEYS
+from nvtlview.platform.platform_settings import PLATFORM
 
 
 class TlviewerMenu(tk.Menu):
@@ -13,6 +15,22 @@ class TlviewerMenu(tk.Menu):
     def __init__(self, master, settings, cnf={}, **kw):
         super().__init__(master=master, cnf=cnf, **kw)
         self.settings = settings
+
+        # "File" menu.
+        self.fileMenu = tk.Menu(self, tearoff=0)
+        self.add_cascade(label=_('File'), menu=self.fileMenu)
+        self.fileMenu.add_command(label=_('New'), command=self._event('<<create_project>>'))
+        self.fileMenu.add_command(label=_('Open...'), accelerator=KEYS.OPEN_PROJECT[1], command=self._event('<<open_project>>'))
+        self.fileMenu.add_command(label=_('Reload'), accelerator=KEYS.RELOAD_PROJECT[1], command=self._event('<<reload_project>>'))
+        self.fileMenu.add_command(label=_('Save'), accelerator=KEYS.SAVE_PROJECT[1], command=self._event('<<save_project>>'))
+        self.fileMenu.add_command(label=_('Save as...'), accelerator=KEYS.SAVE_AS[1], command=self._event('<<ctrl.save_as>>'))
+        self.fileMenu.add_command(label=_('Close'), command=self._event('<<close_project>>'))
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        if PLATFORM == 'win':
+            label = _('Exit')
+        else:
+            label = _('Quit')
+        self.fileMenu.add_command(label=label, accelerator=KEYS.QUIT_PROGRAM[1], command=self._event('<<close_view>>'))
 
         # "Go to" menu.
         self.goMenu = tk.Menu(self, tearoff=0)

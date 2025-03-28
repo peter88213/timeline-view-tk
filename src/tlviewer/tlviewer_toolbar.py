@@ -145,13 +145,6 @@ class TlviewerToolbar(ttk.Frame):
         self.undoButton.pack(side='left')
         self.undoButton.image = self._toolbarIcons['undo']
 
-        # "Close" button.
-        ttk.Button(
-            self,
-            text=_('Close'),
-            command=self._event('<<close_view>>')
-            ).pack(side='right')
-
         # Initialize tooltips.
         if not enableHovertips:
             return

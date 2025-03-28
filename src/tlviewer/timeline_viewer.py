@@ -7,6 +7,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 import locale
 import sys
 from tkinter import ttk
+from tkinter import messagebox
 
 from nvtlview.tlv_controller import TlvController
 import tkinter as tk
@@ -22,15 +23,6 @@ LOCALIZE_DATE = False
 class TimelineViewer:
 
     def __init__(self):
-
-        def disable_undo_button(self, event=None):
-            toolbar.undoButton.config(state='disabled')
-
-        def enable_undo_button(self, event=None):
-            toolbar.undoButton.config(state='normal')
-
-        def on_quit(event=None):
-            sys.exit(0)
 
         if LOCALIZE_DATE:
             locale.setlocale(locale.LC_TIME, "")
@@ -49,8 +41,10 @@ class TimelineViewer:
         self.mdl = TlvDataModel()
         mainWindow = ttk.Frame(self.root)
         mainWindow.pack(fill='both', expand=True)
-        toolbar = TlviewerToolbar(mainWindow, largeIcons=False, enableHovertips=True)
-        toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
+        self.pathBar = tk.Label(mainWindow, text='', anchor='w', padx=5, pady=3)
+        self.pathBar.pack(side='bottom', expand=False, fill='x')
+        self.toolbar = TlviewerToolbar(mainWindow, largeIcons=False, enableHovertips=True)
+        self.toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
 
         self.tlvCtrl = TlvController(
             self.mdl,
@@ -59,7 +53,40 @@ class TimelineViewer:
             settings,
             )
         self.mdl.add_observer(self.tlvCtrl)
+        self._bind_events()
 
+    def disable_undo_button(self, event=None):
+        self.toolbar.undoButton.config(state='disabled')
+
+    def enable_undo_button(self, event=None):
+        self.toolbar.undoButton.config(state='normal')
+
+    def on_quit(self, event=None):
+        sys.exit(0)
+
+    def read_data(self, filePath):
+        try:
+            self.mdl.read_data(filePath)
+        except Exception as ex:
+            messagebox.showerror(
+                self.root.title(),
+                message='Cannot load file',
+                detail=str(ex),
+                )
+            return
+
+        self.tlvCtrl.refresh()
+        self.tlvCtrl.fit_window()
+        self.show_path(filePath)
+
+    def show_path(self, message):
+        """Put text on the path bar."""
+        self.pathBar.config(text=message)
+
+    def start(self):
+        self.root.mainloop()
+
+    def _bind_events(self):
         # Bind the commands to the controller.
         event_callbacks = {
             '<<refresh_view>>': self.tlvCtrl.refresh,
@@ -79,28 +106,25 @@ class TimelineViewer:
             '<<reduce_scale>>': self.tlvCtrl.reduce_scale,
             '<<increase_scale>>': self.tlvCtrl.increase_scale,
             '<<undo>>': self.tlvCtrl.undo,
-            '<<disable_undo>>': disable_undo_button,
-            '<<enable_undo>>': enable_undo_button,
-            '<<close_view>>': on_quit,
+            '<<disable_undo>>': self.disable_undo_button,
+            '<<enable_undo>>': self.enable_undo_button,
+            '<<close_view>>': self.on_quit,
         }
         for sequence, callback in event_callbacks.items():
             self.root.bind(sequence, callback)
 
-    def read_data(self, filePath):
-        self.mdl.read_data(filePath)
-        self.tlvCtrl.refresh()
-        self.tlvCtrl.fit_window()
 
-    def start(self):
-        self.root.mainloop()
-
-
-def main(filePath=None):
+def main():
     app = TimelineViewer()
-    if filePath is not None:
+    try:
+        filePath = sys.argv[1]
+    except IndexError:
+        filePath = None
+    else:
         app.read_data(filePath)
     app.start()
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    main()
+

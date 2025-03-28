@@ -5,10 +5,13 @@ For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import locale
+import os
 import sys
-from tkinter import ttk
+from tkinter import filedialog
 from tkinter import messagebox
+from tkinter import ttk
 
+from nvtlview.platform.platform_settings import KEYS
 from nvtlview.tlv_controller import TlvController
 import tkinter as tk
 from tlv_model.tlv_data_model import TlvDataModel
@@ -35,8 +38,8 @@ class TimelineViewer:
         settings = {
             'substitute_missing_time':tk.BooleanVar(value=SUBSTITUTE_MISSING_TIME),
         }
-        mainMenu = TlviewerMenu(self.root, settings)
-        self.root.config(menu=mainMenu)
+        self.mainMenu = TlviewerMenu(self.root, settings)
+        self.root.config(menu=self.mainMenu)
 
         self.mdl = TlvDataModel()
         mainWindow = ttk.Frame(self.root)
@@ -54,6 +57,31 @@ class TimelineViewer:
             )
         self.mdl.add_observer(self.tlvCtrl)
         self._bind_events()
+        self.prjFilePath = None
+
+    def close_project(self, event=None):
+        """Close the novelibre project without saving and reset the user interface.
+        
+        To be extended by subclasses.
+        """
+        self.mdl.clear()
+        self.prjFilePath = None
+        self.show_path()
+        self.disable_menu()
+
+    def disable_menu(self):
+        """Disable menu entries when no project is open.
+        
+        To be extended by subclasses.
+        """
+        self.mainMenu.disable_menu()
+
+    def enable_menu(self):
+        """Enable menu entries when a project is open.
+        
+        To be extended by subclasses.
+        """
+        self.mainMenu.enable_menu()
 
     def disable_undo_button(self, event=None):
         self.toolbar.undoButton.config(state='disabled')
@@ -64,7 +92,22 @@ class TimelineViewer:
     def on_quit(self, event=None):
         sys.exit(0)
 
+    def open_project(self, event=None):
+        if self.prjFilePath:
+            initDir = os.path.dirname(self.prjFilePath)
+        else:
+            initDir = './'
+
+        filePath = filedialog.askopenfilename(
+            defaultextension='.csv',
+            initialdir=initDir
+            )
+        if filePath:
+            self.read_data(filePath)
+
     def read_data(self, filePath):
+        if self.prjFilePath is not None:
+            self.close_project()
         try:
             self.mdl.read_data(filePath)
         except Exception as ex:
@@ -73,15 +116,56 @@ class TimelineViewer:
                 message='Cannot load file',
                 detail=str(ex),
                 )
-            return
+        else:
+            self.prjFilePath = filePath
+            self.refresh()
 
+    def refresh(self, event=None):
         self.tlvCtrl.refresh()
         self.tlvCtrl.fit_window()
-        self.show_path(filePath)
+        self.enable_menu()
+        self.show_path()
 
-    def show_path(self, message):
+    def reload_project(self, event=None):
+        if self.prjFilePath is not None:
+            self.read_data(self.prjFilePath)
+
+    def save_as(self, event=None):
+        if not self.prjFilePath:
+            return
+
+        if self.prjFilePath:
+            initDir = os.path.dirname(self.prjFilePath)
+        else:
+            initDir = './'
+
+        filePath = filedialog.asksaveasfilename(
+            defaultextension='.csv',
+            initialdir=initDir
+            )
+        if filePath:
+            self.prjFilePath = filePath
+            self.save_project()
+            self.refresh()
+
+    def save_project(self, event=None):
+        if self.prjFilePath:
+            try:
+                self.mdl.write_data(self.prjFilePath)
+            except Exception as ex:
+                messagebox.showerror(
+                    self.root.title(),
+                    message='Cannot save file',
+                    detail=str(ex),
+                    )
+
+    def show_path(self):
         """Put text on the path bar."""
-        self.pathBar.config(text=message)
+        if self.prjFilePath is None:
+            filePath = ''
+        else:
+            filePath = os.path.normpath(self.prjFilePath)
+        self.pathBar.config(text=filePath)
 
     def start(self):
         self.root.mainloop()
@@ -109,6 +193,13 @@ class TimelineViewer:
             '<<disable_undo>>': self.disable_undo_button,
             '<<enable_undo>>': self.enable_undo_button,
             '<<close_view>>': self.on_quit,
+            '<<close_project>>': self.close_project,
+            '<<open_project>>': self.open_project,
+            '<<reload_project>>': self.reload_project,
+            KEYS.OPEN_PROJECT[0]: self.open_project,
+            KEYS.RELOAD_PROJECT[0]: self.reload_project,
+            KEYS.SAVE_PROJECT[0]: self.save_project,
+            KEYS.SAVE_AS[0]: self.save_as,
         }
         for sequence, callback in event_callbacks.items():
             self.root.bind(sequence, callback)

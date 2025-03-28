@@ -45,6 +45,11 @@ class TlvDataModel:
         if not client in self._observers:
             self._observers.append(client)
 
+    def clear(self):
+        for scId in list(self.sections):
+            del(self.sections[scId])
+        self.referenceDate = None
+
     def delete_observer(self, client):
         """Remove an observer instance reference from the list."""
         if client in self._observers:

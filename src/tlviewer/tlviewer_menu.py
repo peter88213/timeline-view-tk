@@ -73,3 +73,17 @@ class TlviewerMenu(tk.Menu):
             root.event_generate(sequence)
 
         return callback
+
+    def disable_menu(self):
+        """Disable menu entries when no project is open.
+        
+        To be extended by subclasses.
+        """
+        self.fileMenu.entryconfig(_('Close'), state='disabled')
+
+    def enable_menu(self):
+        """Enable menu entries when a project is open.
+        
+        To be extended by subclasses.
+        """
+        self.fileMenu.entryconfig(_('Close'), state='normal')

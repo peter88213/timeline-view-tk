@@ -9,7 +9,7 @@ import csv
 from tlv_model.tlv_reader import TlvReader
 from tlv_model.tlv_constants import SC_PREFIX
 from tlv_model.tlv_section import TlvSection
-from tlv_model.id_generator import IdGenerator
+from tlv_model.id_generator import new_id
 
 
 class TlvCsvReader(TlvReader):
@@ -34,7 +34,7 @@ class TlvCsvReader(TlvReader):
 
         self._mdl.sections = {}
         for row in dataTable[1:]:
-            scId = IdGenerator.new_id(self._mdl.sections, SC_PREFIX)
+            scId = new_id(self._mdl.sections, SC_PREFIX)
             if not row[0]:
                 # Row has no title: might be the reference date.
                 if row[4] == '0' and row[2] is not None:

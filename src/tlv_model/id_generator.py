@@ -6,17 +6,14 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 
 
-class IdGenerator:
-
-    @classmethod
-    def new_id(cls, elements, prefix=''):
-        """Return an unused ID for a new element.
-        
-        Positional arguments:
-            elements -- list or dictionary containing all existing IDs
-        """
-        i = 1
-        while f'{prefix}{i}' in elements:
-            i += 1
-        return f'{prefix}{i}'
+def new_id(elements, prefix=''):
+    """Return an unused ID for a new element.
+    
+    Positional arguments:
+        elements -- list or dictionary containing all existing IDs
+    """
+    i = 1
+    while f'{prefix}{i}' in elements:
+        i += 1
+    return f'{prefix}{i}'
 

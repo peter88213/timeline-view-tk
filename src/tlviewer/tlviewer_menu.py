@@ -23,7 +23,7 @@ class TlviewerMenu(tk.Menu):
         self.fileMenu.add_command(label=_('Open...'), accelerator=KEYS.OPEN_PROJECT[1], command=self._event('<<open_project>>'))
         self.fileMenu.add_command(label=_('Reload'), accelerator=KEYS.RELOAD_PROJECT[1], command=self._event('<<reload_project>>'))
         self.fileMenu.add_command(label=_('Save'), accelerator=KEYS.SAVE_PROJECT[1], command=self._event('<<save_project>>'))
-        self.fileMenu.add_command(label=_('Save as...'), accelerator=KEYS.SAVE_AS[1], command=self._event('<<ctrl.save_as>>'))
+        self.fileMenu.add_command(label=_('Save as...'), accelerator=KEYS.SAVE_AS[1], command=self._event('<<save_as>>'))
         self.fileMenu.add_command(label=_('Close'), command=self._event('<<close_project>>'))
         self.fileMenu.entryconfig(_('Close'), state='disabled')
         if PLATFORM == 'win':
@@ -66,6 +66,18 @@ class TlviewerMenu(tk.Menu):
         self.add_cascade(label=_('Help'), menu=self.helpMenu)
         self.helpMenu.add_command(label=_('Online help'), command=self._event('<<open_help>>'))
 
+        self._fileMenuNormalOpen = [
+            _('Close'),
+            _('Reload'),
+            _('Save as...'),
+            _('Save'),
+        ]
+        self._mainMenuNormalOpen = [
+            _('Go to'),
+            _('Scale'),
+            _('Cascading'),
+        ]
+
     def _event(self, sequence):
 
         def callback(*_):
@@ -75,15 +87,15 @@ class TlviewerMenu(tk.Menu):
         return callback
 
     def disable_menu(self):
-        """Disable menu entries when no project is open.
-        
-        To be extended by subclasses.
-        """
-        self.fileMenu.entryconfig(_('Close'), state='disabled')
+        """Disable menu entries when no project is open."""
+        for entry in self._fileMenuNormalOpen:
+            self.fileMenu.entryconfig(entry, state='disabled')
+        for entry in self._mainMenuNormalOpen:
+            self.entryconfig(entry, state='disabled')
 
     def enable_menu(self):
-        """Enable menu entries when a project is open.
-        
-        To be extended by subclasses.
-        """
-        self.fileMenu.entryconfig(_('Close'), state='normal')
+        """Enable menu entries when a project is open."""
+        for entry in self._fileMenuNormalOpen:
+            self.fileMenu.entryconfig(entry, state='normal')
+        for entry in self._mainMenuNormalOpen:
+            self.entryconfig(entry, state='normal')

@@ -75,6 +75,10 @@ class TimelineViewer:
         To be extended by subclasses.
         """
         self.mainMenu.disable_menu()
+        self.toolbar.disable_menu()
+
+    def disable_undo_button(self, event=None):
+        self.toolbar.undoButton.config(state='disabled')
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
@@ -82,9 +86,7 @@ class TimelineViewer:
         To be extended by subclasses.
         """
         self.mainMenu.enable_menu()
-
-    def disable_undo_button(self, event=None):
-        self.toolbar.undoButton.config(state='disabled')
+        self.toolbar.enable_menu()
 
     def enable_undo_button(self, event=None):
         self.toolbar.undoButton.config(state='normal')
@@ -99,6 +101,10 @@ class TimelineViewer:
             initDir = './'
 
         filePath = filedialog.askopenfilename(
+            filetypes=[
+                ('Comma separated values', '.csv'),
+                ('All files', '.*'),
+            ],
             defaultextension='.csv',
             initialdir=initDir
             )
@@ -140,6 +146,10 @@ class TimelineViewer:
             initDir = './'
 
         filePath = filedialog.asksaveasfilename(
+            filetypes=[
+                ('Comma separated values', '.csv'),
+                ('All files', '.*'),
+            ],
             defaultextension='.csv',
             initialdir=initDir
             )
@@ -173,33 +183,35 @@ class TimelineViewer:
     def _bind_events(self):
         # Bind the commands to the controller.
         event_callbacks = {
-            '<<refresh_view>>': self.tlvCtrl.refresh,
-            '<<go_to_first>>': self.tlvCtrl.go_to_first,
-            '<<go_to_last>>': self.tlvCtrl.go_to_last,
-            '<<set_hour_scale>>': self.tlvCtrl.set_hour_scale,
-            '<<set_day_scale>>': self.tlvCtrl.set_day_scale,
-            '<<set_year_scale>>': self.tlvCtrl.set_year_scale,
-            '<<fit_window>>': self.tlvCtrl.fit_window,
-            '<<set_casc_tight>>': self.tlvCtrl.set_casc_tight,
-            '<<set_casc_relaxed>>': self.tlvCtrl.set_casc_relaxed,
-            '<<reset_casc>>': self.tlvCtrl.reset_casc,
-            '<<page_back>>': self.tlvCtrl.page_back,
-            '<<page_forward>>': self.tlvCtrl.page_forward,
-            '<<scroll_back>>': self.tlvCtrl.scroll_back,
-            '<<scroll_forward>>': self.tlvCtrl.scroll_forward,
-            '<<reduce_scale>>': self.tlvCtrl.reduce_scale,
-            '<<increase_scale>>': self.tlvCtrl.increase_scale,
-            '<<undo>>': self.tlvCtrl.undo,
+            '<<close_project>>': self.close_project,
+            '<<close_view>>': self.on_quit,
             '<<disable_undo>>': self.disable_undo_button,
             '<<enable_undo>>': self.enable_undo_button,
-            '<<close_view>>': self.on_quit,
-            '<<close_project>>': self.close_project,
+            '<<fit_window>>': self.tlvCtrl.fit_window,
+            '<<go_to_first>>': self.tlvCtrl.go_to_first,
+            '<<go_to_last>>': self.tlvCtrl.go_to_last,
+            '<<increase_scale>>': self.tlvCtrl.increase_scale,
             '<<open_project>>': self.open_project,
+            '<<page_back>>': self.tlvCtrl.page_back,
+            '<<page_forward>>': self.tlvCtrl.page_forward,
+            '<<reduce_scale>>': self.tlvCtrl.reduce_scale,
+            '<<refresh_view>>': self.tlvCtrl.refresh,
             '<<reload_project>>': self.reload_project,
+            '<<reset_casc>>': self.tlvCtrl.reset_casc,
+            '<<save_as>>': self.save_as,
+            '<<save_project>>': self.save_project,
+            '<<scroll_back>>': self.tlvCtrl.scroll_back,
+            '<<scroll_forward>>': self.tlvCtrl.scroll_forward,
+            '<<set_casc_relaxed>>': self.tlvCtrl.set_casc_relaxed,
+            '<<set_casc_tight>>': self.tlvCtrl.set_casc_tight,
+            '<<set_day_scale>>': self.tlvCtrl.set_day_scale,
+            '<<set_hour_scale>>': self.tlvCtrl.set_hour_scale,
+            '<<set_year_scale>>': self.tlvCtrl.set_year_scale,
+            '<<undo>>': self.tlvCtrl.undo,
             KEYS.OPEN_PROJECT[0]: self.open_project,
             KEYS.RELOAD_PROJECT[0]: self.reload_project,
-            KEYS.SAVE_PROJECT[0]: self.save_project,
             KEYS.SAVE_AS[0]: self.save_as,
+            KEYS.SAVE_PROJECT[0]: self.save_project,
         }
         for sequence, callback in event_callbacks.items():
             self.root.bind(sequence, callback)

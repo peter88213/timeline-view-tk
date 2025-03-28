@@ -46,6 +46,8 @@ class TlviewerToolbar(ttk.Frame):
             except:
                 self._toolbarIcons[icon] = None
 
+        self.buttons = list()
+
         # Moving the x position.
         rewindLeftButton = ttk.Button(
             self,
@@ -55,6 +57,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         rewindLeftButton.pack(side='left')
         rewindLeftButton.image = self._toolbarIcons['rewindLeft']
+        self.buttons.append(rewindLeftButton)
 
         arrowLeftButton = ttk.Button(
             self,
@@ -64,6 +67,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         arrowLeftButton.pack(side='left')
         arrowLeftButton.image = self._toolbarIcons['arrowLeft']
+        self.buttons.append(arrowLeftButton)
 
         goToFirstButton = ttk.Button(
             self,
@@ -73,6 +77,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         goToFirstButton.pack(side='left')
         goToFirstButton.image = self._toolbarIcons['goToFirst']
+        self.buttons.append(goToFirstButton)
 
         goToLastButton = ttk.Button(
             self,
@@ -82,6 +87,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         goToLastButton.pack(side='left')
         goToLastButton.image = self._toolbarIcons['goToLast']
+        self.buttons.append(goToLastButton)
 
         arrowRightButton = ttk.Button(
             self,
@@ -91,6 +97,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         arrowRightButton.pack(side='left')
         arrowRightButton.image = self._toolbarIcons['arrowRight']
+        self.buttons.append(arrowRightButton)
 
         rewindRightButton = ttk.Button(
             self,
@@ -100,6 +107,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         rewindRightButton.pack(side='left')
         rewindRightButton.image = self._toolbarIcons['rewindRight']
+        self.buttons.append(rewindRightButton)
 
         # Separator.
         tk.Frame(self, bg='light gray', width=1).pack(side='left', fill='y', padx=6)
@@ -113,6 +121,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         arrowDownButton.pack(side='left')
         arrowDownButton.image = self._toolbarIcons['arrowDown']
+        self.buttons.append(arrowDownButton)
 
         fitToWindowButton = ttk.Button(
             self,
@@ -122,6 +131,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         fitToWindowButton.pack(side='left')
         fitToWindowButton.image = self._toolbarIcons['fitToWindow']
+        self.buttons.append(fitToWindowButton)
 
         arrowUpButton = ttk.Button(
             self,
@@ -131,6 +141,7 @@ class TlviewerToolbar(ttk.Frame):
             )
         arrowUpButton.pack(side='left')
         arrowUpButton.image = self._toolbarIcons['arrowUp']
+        self.buttons.append(arrowUpButton)
 
         # Separator.
         tk.Frame(self, bg='light gray', width=1).pack(side='left', fill='y', padx=6)
@@ -172,3 +183,14 @@ class TlviewerToolbar(ttk.Frame):
             root.event_generate(sequence)
 
         return callback
+
+    def disable_menu(self):
+        """Disable menu entries when no project is open."""
+        for button in self.buttons:
+            button.config(state='disabled')
+        self.undoButton.config(state='disabled')
+
+    def enable_menu(self):
+        """Enable menu entries when a project is open."""
+        for button in self.buttons:
+            button.config(state='normal')

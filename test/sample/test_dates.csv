@@ -1,12 +1,12 @@
 Title,Desc,Date,Time,Day,LastsDays,LastsHours,LastsMinutes
-TlvSection 5,,2024-07-14,18:56,,,,20
+Event 5,,2024-07-14,18:56,,,,20
 The second event,,2024-07-14,14:15,,,2,
-TlvSection 3,,2024-07-14,18:15,,,,2
-TlvSection six (no time),,2024-07-14,,,,,
-TlvSection 4,,2024-07-14,18:16,,,,20
-TlvSection 1,,2024-07-14,13:00,,,1,30
-TlvSection Seven (second day),,,13:00,2,,1,30
-"TlvSection Eight (second day, no time)",,,,2,,1,30
-TlvSection Nine (time only),,,18:16,,,1,30
-TlvSection Ten (no data),,,,,,,
+Event 3,,2024-07-14,18:15,,,,2
+Event six (no time),,2024-07-14,,,,,
+Event 4,,2024-07-14,18:16,,,,20
+Event 1,,2024-07-14,13:00,,,1,30
+Event Seven (second day),,,13:00,2,,1,30
+"Event Eight (second day, no time)",,,,2,,1,30
+Event Nine (time only),,,18:16,,,1,30
+Event Ten (no data),,,,,,,
 ,,2024-07-13,,0,,,

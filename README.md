@@ -27,6 +27,14 @@ The *nvtlview* class library is used for the
 [novelibre timeline viewer plugin](https://github.com/peter88213/nv_tlview/),
 for example.
 
+---
+
+## Credits
+
+- The toolbar icons are based on the [Eva Icons](https://akveo.github.io/eva-icons/#/), published under the [MIT License](http://www.opensource.org/licenses/mit-license.php). The original black and white icons were adapted for this application by the maintainer. 
+
+---
+
 ## License
 
 This is Open Source software, and *timeline-view-tk* is licensed under GPLv3. See the

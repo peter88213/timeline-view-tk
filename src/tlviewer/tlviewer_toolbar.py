@@ -4,11 +4,12 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from pathlib import Path
+import os
+import sys
 from tkinter import ttk
 
-import tkinter as tk
 from nvtlview.tlv_locale import _
+import tkinter as tk
 
 
 class TlviewerToolbar(ttk.Frame):
@@ -22,8 +23,8 @@ class TlviewerToolbar(ttk.Frame):
         else:
             size = 16
         try:
-            homeDir = str(Path.home()).replace('\\', '/')
-            iconPath = f'{homeDir}/.novx/icons/{size}'
+            startDir = os.path.dirname(sys.argv[0])
+            iconPath = f'{startDir}/icons/{size}'
         except:
             iconPath = None
 

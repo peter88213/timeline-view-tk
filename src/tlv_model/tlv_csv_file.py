@@ -1,4 +1,4 @@
-"""Provide a class for reading csv data files.
+"""Provide a class for csv data file representation.
 
 Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
@@ -6,14 +6,15 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import csv
 
-from tlv_model.tlv_reader import TlvReader
-from tlv_model.tlv_constants import SC_PREFIX
-from tlv_model.tlv_section import TlvSection
 from tlv_model.id_generator import new_id
+from tlv_model.tlv_constants import SC_PREFIX
+from tlv_model.tlv_file import TlvFile
+from tlv_model.tlv_section import TlvSection
 
 
-class TlvCsvReader(TlvReader):
+class TlvCsvFile(TlvFile):
 
+    EXTENSION = 'csv'
     COLUMNS = [
         'Title',
         'Desc',
@@ -25,12 +26,12 @@ class TlvCsvReader(TlvReader):
         'LastsMinutes'
     ]
 
-    def read(self, filePath):
-        with open(filePath, newline='') as f:
+    def read(self):
+        with open(self.filePath, newline='') as f:
             dataReader = csv.reader(f)
             dataTable = list(dataReader)
         if dataTable[0] != self.COLUMNS:
-            raise ValueError(f'Wrong data structure in "{filePath}"')
+            raise ValueError(f'Wrong data structure in "{self.filePath}"')
 
         self._mdl.sections = {}
         for row in dataTable[1:]:
@@ -61,3 +62,31 @@ class TlvCsvReader(TlvReader):
             ) = cells
             self._mdl.sections[scId].on_element_change = self._mdl.on_element_change
 
+    def write(self):
+        dataTable = [self.COLUMNS]
+        for scId in self._mdl.sections:
+            dataTable.append([
+                self._mdl.sections[scId].title,
+                self._mdl.sections[scId].desc,
+                self._mdl.sections[scId].date,
+                self._mdl.sections[scId].time,
+                self._mdl.sections[scId].day,
+                self._mdl.sections[scId].lastsDays,
+                self._mdl.sections[scId].lastsHours,
+                self._mdl.sections[scId].lastsMinutes,
+                ])
+        if self._mdl.referenceDate:
+            dataTable.append([
+                '',
+                '',
+                self._mdl.referenceDate,
+                '',
+                '0',
+                '',
+                '',
+                '',
+                ])
+
+        with open(self.filePath, 'w', newline='') as f:
+            dataWriter = csv.writer(f, dialect='excel')
+            dataWriter.writerows(dataTable)

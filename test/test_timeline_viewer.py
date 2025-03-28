@@ -8,7 +8,7 @@ import csv
 import os
 import unittest
 
-from tlv_model.tlv_csv_reader import TlvCsvReader
+from tlv_model.tlv_csv_file import TlvCsvFile
 from tlv_model.tlv_data_model import TlvDataModel
 from tlv_model.tlv_section import TlvSection
 
@@ -99,8 +99,7 @@ NORMAL_TEST_SECTIONS = {
 
 def create_test_file(dataTable):
     with open(TEST_CSV_FILE, 'w', newline='') as f:
-        dataWriter = csv.writer(f)
-        # dataWriter.writeheader(TlvCsvReader.COLUMNS)
+        dataWriter = csv.writer(f, dialect='excel')
         dataWriter.writerows(dataTable)
 
 
@@ -111,7 +110,35 @@ def delete_test_files():
         pass
 
 
-class TestNormal(unittest.TestCase):
+def get_data_table(filePath):
+    with open(filePath, newline='') as f:
+        dataReader = csv.reader(f)
+        dataTable = list(dataReader)
+    return dataTable
+
+
+class TestNormalWrite(unittest.TestCase):
+
+    def tearDown(self):
+        delete_test_files()
+
+    def test_csv_file_write(self):
+        model = TlvDataModel()
+        model.sections = NORMAL_TEST_SECTIONS
+        model.referenceDate = REFERENCE_DATE
+        dataFile = TlvCsvFile(model, TEST_CSV_FILE)
+        dataFile.write()
+        self.assertEqual(get_data_table(TEST_CSV_FILE), NORMAL_DATA_TABLE)
+
+    def test_data_model_write_data(self):
+        model = TlvDataModel()
+        model.sections = NORMAL_TEST_SECTIONS
+        model.referenceDate = REFERENCE_DATE
+        model.write_data(TEST_CSV_FILE)
+        self.assertEqual(get_data_table(TEST_CSV_FILE), NORMAL_DATA_TABLE)
+
+
+class TestNormalRead(unittest.TestCase):
 
     def setUp(self):
         create_test_file(NORMAL_DATA_TABLE)
@@ -119,10 +146,10 @@ class TestNormal(unittest.TestCase):
     def tearDown(self):
         delete_test_files()
 
-    def test_csv_reader_read(self):
+    def test_csv_file_read(self):
         model = TlvDataModel()
-        reader = TlvCsvReader(model)
-        reader.read(TEST_CSV_FILE)
+        dataFile = TlvCsvFile(model, TEST_CSV_FILE)
+        dataFile.read()
         for scId in NORMAL_TEST_SECTIONS:
             self.assertEqual(model.sections[scId].title, NORMAL_TEST_SECTIONS[scId].title)
             self.assertEqual(model.sections[scId].desc, NORMAL_TEST_SECTIONS[scId].desc)

@@ -4,6 +4,10 @@ A timeline viewer programmed with Python, using tkinter.
 
 ![Screenshot](docs/Screenshots/screen01.png)
 
+The data is read from a csv file:
+
+![Screenshot](docs/Screenshots/screen02.png)
+
 The *nvtlview* class library provides the *tlv* widget that is addressed via its controller.
 
 *Timeline_viewer* is a simple standalone application using *nvtlview* 

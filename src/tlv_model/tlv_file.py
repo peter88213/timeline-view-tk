@@ -1,4 +1,4 @@
-"""Provide an abstract base class for data file readers.
+"""Provide an abstract base class for data file representation.
 
 Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
@@ -8,12 +8,19 @@ from abc import ABC
 from abc import abstractmethod
 
 
-class TlvReader(ABC):
+class TlvFile(ABC):
 
-    def __init__(self, model):
+    EXTENSION = None
+
+    def __init__(self, model, filePath=None):
         self._mdl = model
+        self.filePath = filePath
 
     @abstractmethod
-    def read(self, filePath):
+    def read(self):
+        pass
+
+    @abstractmethod
+    def write(self):
         pass
 

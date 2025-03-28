@@ -4,7 +4,7 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from tlv_model.tlv_csv_reader import TlvCsvReader
+from tlv_model.tlv_csv_file import TlvCsvFile
 
 
 class TlvDataModel:
@@ -18,7 +18,7 @@ class TlvDataModel:
         self._isModified = False
         # internal modification flag
 
-        self.dataReader = TlvCsvReader(self)
+        self.dataFile = TlvCsvFile(self)
 
     @property
     def isModified(self):
@@ -59,5 +59,10 @@ class TlvDataModel:
         self.isModified = True
 
     def read_data(self, filePath):
-        self.dataReader.read(filePath)
+        self.dataFile.filePath = filePath
+        self.dataFile.read()
+
+    def write_data(self, filePath):
+        self.dataFile.filePath = filePath
+        self.dataFile.write()
 

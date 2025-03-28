@@ -6,9 +6,6 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from tlv_model.tlv_csv_reader import TlvCsvReader
 
-from tlv_model.tlv_section import TlvSection
-from tlv_model.tlv_constants import COLUMNS, SC_PREFIX
-
 
 class TlvDataModel:
 
@@ -21,7 +18,7 @@ class TlvDataModel:
         self._isModified = False
         # internal modification flag
 
-        self.dataReader = TlvCsvReader()
+        self.dataReader = TlvCsvReader(self)
 
     @property
     def isModified(self):
@@ -61,41 +58,6 @@ class TlvDataModel:
         """Callback function that reports changes."""
         self.isModified = True
 
-    def set_data(self, dataTable):
-        assert dataTable[0] == COLUMNS
-        self.sections = {}
-        for row in dataTable:
-            scId = row[0]
-            if not scId:
-                # Row has no ID: might be the reference date.
-                if row[5] == '0' and row[3] is not None:
-                    self.referenceDate = row[3]
-            elif scId.startswith(SC_PREFIX):
-                # Strip ID and convert empty strings to None.
-                cells = []
-                for i, cell in enumerate(row):
-                    if i == 0:
-                        # skip ID
-                        continue
-
-                    if cell:
-                        cells.append(cell)
-                    else:
-                        cells.append(None)
-
-                self.sections[scId] = TlvSection()
-                (
-                    self.sections[scId].title,
-                    self.sections[scId].desc,
-                    self.sections[scId].date,
-                    self.sections[scId].time,
-                    self.sections[scId].day,
-                    self.sections[scId].lastsDays,
-                    self.sections[scId].lastsHours,
-                    self.sections[scId].lastsMinutes,
-                ) = cells
-                self.sections[scId].on_element_change = self.on_element_change
-
     def read_data(self, filePath):
-        self.set_data(self.dataReader.get_data_table(filePath))
+        self.dataReader.read(filePath)
 

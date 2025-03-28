@@ -10,7 +10,10 @@ from abc import abstractmethod
 
 class TlvReader(ABC):
 
+    def __init__(self, model):
+        self._mdl = model
+
     @abstractmethod
-    def get_data_table(self, filePath):
+    def read(self, filePath):
         pass
 

@@ -178,13 +178,3 @@ Online help
 :   This restores date/time/duration before the last mouse operation on
     a section.
 
-    ---
-    
-    **Caution**
-
-    Interim changes to date/time/duration on the same section via the
-    section properties in *novelibre* may get lost.
-    
-    ---
-
-

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2025-03-29 11:04:08\n"
+"POT-Creation-Date: 2025-03-29 15:43:40\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -13,6 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: novxlib pgettext.py 0.3\n"
 
+
+msgid "About Timeline viewer"
+msgstr ""
 
 msgid "Cascading"
 msgstr ""
@@ -45,6 +48,9 @@ msgid "Go to"
 msgstr ""
 
 msgid "Help"
+msgstr ""
+
+msgid "Home page"
 msgstr ""
 
 msgid "Hours"

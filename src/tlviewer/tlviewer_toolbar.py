@@ -9,6 +9,7 @@ from tkinter import ttk
 
 from nvtlview.tlv_locale import _
 import tkinter as tk
+from tlviewer.tooltip import Hovertip
 
 
 class TlviewerToolbar(ttk.Frame):
@@ -160,7 +161,6 @@ class TlviewerToolbar(ttk.Frame):
         if not enableHovertips:
             return
 
-        from tlviewer.tooltip import Hovertip
         Hovertip(rewindLeftButton, rewindLeftButton['text'])
         Hovertip(arrowLeftButton, arrowLeftButton['text'])
         Hovertip(goToFirstButton, goToFirstButton['text'])

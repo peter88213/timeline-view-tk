@@ -32,6 +32,11 @@ class TlviewerMenu(tk.Menu):
             label = _('Quit')
         self.fileMenu.add_command(label=label, accelerator=KEYS.QUIT_PROGRAM[1], command=self._event('<<close_view>>'))
 
+        # "Edit" menu.
+        self.editMenu = tk.Menu(self, tearoff=0)
+        self.add_cascade(label=_('Edit'), menu=self.editMenu)
+        self.editMenu.add_command(label=_('Open project file'), command=self._event('<<open_project_file>>'))
+
         # "Go to" menu.
         self.goMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label=_('Go to'), menu=self.goMenu)

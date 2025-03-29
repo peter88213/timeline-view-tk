@@ -12,6 +12,7 @@ import webbrowser
 
 from nvtlview.platform.platform_settings import KEYS
 from nvtlview.tlv_locale import _
+from tlviewer.doc_open import open_document
 from tlviewer.tlviewer_globals import HELP_URL
 from tlviewer.tlviewer_globals import HOME_URL
 
@@ -45,6 +46,7 @@ class TlviewerCommands:
             '<<open_help>>': self.open_help,
             '<<open_homepage>>': self.open_homepage,
             '<<open_project>>': self.open_project,
+            '<<open_project_file>>': self.open_project_file,
             '<<page_back>>': self.tlvCtrl.page_back,
             '<<page_forward>>': self.tlvCtrl.page_forward,
             '<<reduce_scale>>': self.tlvCtrl.reduce_scale,
@@ -74,6 +76,7 @@ class TlviewerCommands:
         
         To be extended by subclasses.
         """
+        # TODO: save changes on demand
         self.mdl.clear()
         self.prjFilePath = None
         self.show_path()
@@ -94,6 +97,7 @@ class TlviewerCommands:
             initialdir=initDir
             )
         if filePath:
+            # TODO: save changes on demand
             self.mdl.clear()
             self.prjFilePath = filePath
             self.show_path()
@@ -106,6 +110,7 @@ class TlviewerCommands:
         self.toolbar.undoButton.config(state='normal')
 
     def on_quit(self, event=None):
+        self.close_project()
         sys.exit(0)
 
     def open_help(self, event=None):
@@ -130,6 +135,11 @@ class TlviewerCommands:
             )
         if filePath:
             self.read_data(filePath)
+
+    def open_project_file(self, event=None):
+        if self.prjFilePath:
+            # TODO: save changes on demand
+            open_document(self.prjFilePath)
 
     def open_section(self, scId):
         print(scId)

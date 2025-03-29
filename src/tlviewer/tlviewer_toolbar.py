@@ -160,11 +160,7 @@ class TlviewerToolbar(ttk.Frame):
         if not enableHovertips:
             return
 
-        try:
-            from idlelib.tooltip import Hovertip
-        except ModuleNotFoundError:
-            return
-
+        from tlviewer.tooltip import Hovertip
         Hovertip(rewindLeftButton, rewindLeftButton['text'])
         Hovertip(arrowLeftButton, arrowLeftButton['text'])
         Hovertip(goToFirstButton, goToFirstButton['text'])

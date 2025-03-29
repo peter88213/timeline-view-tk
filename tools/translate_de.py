@@ -8,24 +8,22 @@ translate_de.py
 
 File structure:
 
-├── novelibre/
-│   ├── i18n/
-│   │   └── de.json
-│   └── tools/
-│       ├── translate_de.py
-│       ├── translations.py
-│       └── msgfmt.py
-└── (app)/
-    └── i18n/
-        ├── messages.pot
-        ├── de.po
-        └── locale/
-            └─ de/
-               └─ LC_MESSAGES/
-                  └─ (moFile)
+timeline-view-tk/
+├── tools/
+│   ├── translate_de.py
+│   ├── translations.py
+│   └── msgfmt.py
+└── i18n/
+    ├── messages.pot
+    ├── de.po
+    └── locale/
+        └─ de/
+           └─ LC_MESSAGES/
+              └─ (moFile)
+
     
 Copyright (c) 2025 Peter Triesberger
-For further information see https://github.com/peter88213/novelibre
+For further information see https://github.com/peter88213/timeline-viewer-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
@@ -38,7 +36,7 @@ import translations
 I18_DIR = '../i18n'
 MO_DIR = 'locale/de/LC_MESSAGES'
 PO_FILE = 'de.po'
-MO_COPY_DIR = '../../novelibre/src/locale/de/LC_MESSAGES'
+MO_COPY_DIR = '../../timeline-view-tk/src/locale/de/LC_MESSAGES'
 
 
 def main(moFile, app='', version='unknown', languages='', translator='unknown'):
@@ -46,7 +44,7 @@ def main(moFile, app='', version='unknown', languages='', translator='unknown'):
         'de',
         app=app,
         appVersion=version,
-        json=True,
+        json=False,
         languages=languages,
         translator=translator
         ):

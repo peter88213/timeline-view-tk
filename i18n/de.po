@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2025-03-29 15:43:40\n"
-"PO-Revision-Date: 2025-03-29 15:43:40\n"
+"POT-Creation-Date: 2025-03-29 18:36:05\n"
+"PO-Revision-Date: 2025-03-29 18:36:05\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,9 @@ msgstr "Tag"
 
 msgid "Days"
 msgstr "Tage"
+
+msgid "Edit"
+msgstr "Bearbeiten"
 
 msgid "Exit"
 msgstr "Beenden"
@@ -67,6 +70,12 @@ msgstr "Neu"
 msgid "Online help"
 msgstr "Online-Hilfe"
 
+msgid "Open project file"
+msgstr "Projektdatei öffnen"
+
+msgid "Open the file for data entry?"
+msgstr "Datei zur Dateneingabe öffnen?"
+
 msgid "Open..."
 msgstr "Öffnen..."
 
@@ -75,6 +84,9 @@ msgstr "Seite zurück"
 
 msgid "Page forward"
 msgstr "Seite vor"
+
+msgid "Project created"
+msgstr "Projekt erzeugt"
 
 msgid "Quit"
 msgstr "Beenden"

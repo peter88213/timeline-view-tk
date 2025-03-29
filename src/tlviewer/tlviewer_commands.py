@@ -96,12 +96,19 @@ class TlviewerCommands:
             defaultextension='.csv',
             initialdir=initDir
             )
-        if filePath:
-            # TODO: save changes on demand
-            self.mdl.clear()
-            self.prjFilePath = filePath
-            self.show_path()
-            self.save_project()
+        if not filePath:
+            return
+
+        # TODO: save changes on demand
+        self.mdl.clear()
+        self.prjFilePath = filePath
+        self.show_path()
+        self.save_project()
+        if messagebox.askyesno(
+            title=_('Project created'),
+            message=_('Open the file for data entry?'),
+            ):
+            self.open_project_file()
 
     def disable_undo_button(self, event=None):
         self.toolbar.undoButton.config(state='disabled')

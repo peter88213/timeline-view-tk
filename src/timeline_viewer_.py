@@ -31,7 +31,7 @@ from tlviewer.tlviewer_toolbar import TlviewerToolbar
 
 WINDOW_GEOMETRY = '1200x800'
 SUBSTITUTE_MISSING_TIME = True
-LOCALIZE_DATE = False
+LOCALIZE_DATE = True
 
 
 class TimelineViewer(TlviewerCommands):

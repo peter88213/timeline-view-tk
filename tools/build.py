@@ -20,14 +20,16 @@ TEMP_FILE = '../test/temp.py'
 class ApplicationBuilder(PackageBuilder):
 
     PRJ_NAME = 'timeline_viewer'
-    GERMAN_TRANSLATION = False
+    GERMAN_TRANSLATION = True
 
     def __init__(self, version):
         super().__init__(version)
         self.sourceFile = f'{self.sourceDir}{self.PRJ_NAME}_.py'
+        self.moFile = 'nv_tlview.mo'
 
     def add_extras(self):
         self.add_icons()
+        self.add_sample()
 
     def build_script(self):
         os.makedirs(self.testDir, exist_ok=True)

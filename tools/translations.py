@@ -7,20 +7,21 @@ translations.py language-code
 
 File structure:
 
-├── novelibre/
-│   ├── i18n/
-│   │   └── <language>.json
-│   └── tools/
-│       └── translations.py
-└── <plugin>/
-    ├── i18n/ 
-    │   ├── messages.pot
-    │   └── <language>.po
-    └── tools/
-        └── <calling script>
+timeline-view-tk/
+├── tools/
+│   ├── translate_de.py
+│   ├── translations.py
+│   └── msgfmt.py
+└── i18n/
+    ├── messages.pot
+    ├── <language>.po
+    └── locale/
+        └─ <language>/
+           └─ LC_MESSAGES/
+              └─ (moFile)
 
 Copyright (c) 2025 Peter Triesberger
-For further information see https://github.com/peter88213/novelibre
+For further information see https://github.com/peter88213/timeline-viewer-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 

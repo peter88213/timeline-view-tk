@@ -78,7 +78,6 @@ The package is also available in zip format: [timeline_viewer_v0.99.0.zip](https
 - Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
 - or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 
-You may wish to install plugins; the [update checker](https://github.com/peter88213/nv_updater/) is highly recommended.
 
 ---
 

@@ -4,8 +4,7 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-import os
-import sys
+from pathlib import Path
 from tkinter import ttk
 
 from nvtlview.tlv_locale import _
@@ -23,8 +22,8 @@ class TlviewerToolbar(ttk.Frame):
         else:
             size = 16
         try:
-            startDir = os.path.dirname(sys.argv[0])
-            iconPath = f'{startDir}/icons/{size}'
+            homeDir = str(Path.home()).replace('\\', '/')
+            iconPath = f'{homeDir}/.tlviewer/icons/{size}'
         except:
             iconPath = None
 

@@ -1,5 +1,5 @@
+/src/locale/
 /build/
-/build-ref/
 *.pyc
 *.bak
 /test/work/

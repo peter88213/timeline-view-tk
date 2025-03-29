@@ -35,6 +35,7 @@ class TlviewerCommands:
             '<<about>>': self.about,
             '<<close_project>>': self.close_project,
             '<<close_view>>': self.on_quit,
+            '<<create_project>>':self.create_project,
             '<<disable_undo>>': self.disable_undo_button,
             '<<enable_undo>>': self.enable_undo_button,
             '<<fit_window>>': self.tlvCtrl.fit_window,
@@ -78,6 +79,26 @@ class TlviewerCommands:
         self.show_path()
         self.disable_menu()
 
+    def create_project(self, event=None):
+        if self.prjFilePath:
+            initDir = os.path.dirname(self.prjFilePath)
+        else:
+            initDir = './'
+
+        filePath = filedialog.asksaveasfilename(
+            filetypes=[
+                ('Comma separated values', '.csv'),
+                ('All files', '.*'),
+            ],
+            defaultextension='.csv',
+            initialdir=initDir
+            )
+        if filePath:
+            self.mdl.clear()
+            self.prjFilePath = filePath
+            self.show_path()
+            self.save_project()
+
     def disable_undo_button(self, event=None):
         self.toolbar.undoButton.config(state='disabled')
 
@@ -118,7 +139,7 @@ class TlviewerCommands:
             self.read_data(self.prjFilePath)
 
     def save_as(self, event=None):
-        if not self.prjFilePath:
+        if self.prjFilePath is None:
             return
 
         if self.prjFilePath:

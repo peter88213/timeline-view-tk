@@ -8,15 +8,31 @@ import os
 import sys
 from tkinter import filedialog
 from tkinter import messagebox
+import webbrowser
 
 from nvtlview.platform.platform_settings import KEYS
+from nvtlview.tlv_locale import _
+from tlviewer.tlviewer_globals import HELP_URL
+from tlviewer.tlviewer_globals import HOME_URL
 
 
 class TlviewerCommands:
 
+    def about(self, event=None):
+        """Display a legal notice window.
+        
+        Important: after building the program, __doc__ will be the timeline_viewer docstring.
+        """
+        messagebox.showinfo(
+            message='Timeline viewer',
+            detail=__doc__,
+            title=_('About Timeline viewer')
+            )
+
     def bind_events(self):
         # Bind the commands to the controller.
         event_callbacks = {
+            '<<about>>': self.about,
             '<<close_project>>': self.close_project,
             '<<close_view>>': self.on_quit,
             '<<disable_undo>>': self.disable_undo_button,
@@ -25,6 +41,8 @@ class TlviewerCommands:
             '<<go_to_first>>': self.tlvCtrl.go_to_first,
             '<<go_to_last>>': self.tlvCtrl.go_to_last,
             '<<increase_scale>>': self.tlvCtrl.increase_scale,
+            '<<open_help>>': self.open_help,
+            '<<open_homepage>>': self.open_homepage,
             '<<open_project>>': self.open_project,
             '<<page_back>>': self.tlvCtrl.page_back,
             '<<page_forward>>': self.tlvCtrl.page_forward,
@@ -69,8 +87,11 @@ class TlviewerCommands:
     def on_quit(self, event=None):
         sys.exit(0)
 
-    def open_section(self, scId):
-        print(scId)
+    def open_help(self, event=None):
+        webbrowser.open(HELP_URL)
+
+    def open_homepage(self, event=None):
+        webbrowser.open(HOME_URL)
 
     def open_project(self, event=None):
         if self.prjFilePath:
@@ -88,6 +109,9 @@ class TlviewerCommands:
             )
         if filePath:
             self.read_data(filePath)
+
+    def open_section(self, scId):
+        print(scId)
 
     def reload_project(self, event=None):
         if self.prjFilePath is not None:

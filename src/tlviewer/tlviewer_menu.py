@@ -65,6 +65,8 @@ class TlviewerMenu(tk.Menu):
         self.helpMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label=_('Help'), menu=self.helpMenu)
         self.helpMenu.add_command(label=_('Online help'), command=self._event('<<open_help>>'))
+        self.helpMenu.add_command(label=_('About Timeline viewer'), command=self._event('<<about>>'))
+        self.helpMenu.add_command(label=f"Timeline viewer {_('Home page')}", command=self._event('<<open_homepage>>'))
 
         self._fileMenuNormalOpen = [
             _('Close'),

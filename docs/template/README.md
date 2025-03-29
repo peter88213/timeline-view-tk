@@ -1,6 +1,6 @@
 [![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.99.0.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
-[![Feedback](docs/img/news-button.png)](https://github.com/peter88213/timeline-view-tk/discussions)
+[![Feedback](docs/img/feedback-button.png)](https://github.com/peter88213/timeline-view-tk/discussions)
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/timeline-view-tk/help/)
 
 

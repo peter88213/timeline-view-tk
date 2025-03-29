@@ -8,6 +8,7 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from shutil import copytree
 from shutil import copy2
+import platform
 import zipfile
 import os
 import sys
@@ -21,10 +22,9 @@ except ModuleNotFoundError:
     print('The tkinter module is missing. Please install the tk support package for your python3 version.')
     sys.exit(1)
 
-from tkinter import messagebox
-
 APPNAME = 'timeline_viewer'
 VERSION = ' @release'
+START_UP_SCRIPT = 'run.pyw'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
 INI_PATH = '/config/'
@@ -43,6 +43,24 @@ and then drag and drop $Appname.py to your desktop.
 
 On Linux, create a launcher on your desktop. With xfce for instance, the launcher's command may look like this:
 python3 '$Apppath' %F
+'''
+
+START_UP_CODE = f'''import logging
+from tkinter import messagebox
+import traceback
+
+import $Appname
+import tkinter as tk
+
+def show_error(self, *args):
+    err = traceback.format_exception(*args)
+    logger.error('$Appname $Release\\n' + ''.join(err))
+    messagebox.showerror('An unexpected error has occurred.', 'See "error.log" in the installation directory.' )
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='$InstallDir/error.log', level=logging.ERROR)
+tk.Tk.report_callback_exception = show_error
+$Appname.main()
 '''
 
 root = Tk()
@@ -129,9 +147,24 @@ def install(novxPath, zipped):
     output('Copying icons ...')
     copy_tree('icons', installDir)
 
-    # Make the script executable under Linux.
+    #--- Create a start-up script.
+    output('Creating starter script ...')
+    mapping = {'Appname': APPNAME, 'Apppath': f'{installDir}/{START_UP_SCRIPT}'}
+    mapping['InstallDir'] = installDir
+    mapping['Release'] = VERSION
+    if platform.system() == 'Windows':
+        shebang = ''
+    else:
+        shebang = '#!/usr/bin/env python3\n'
+    with open(f'{installDir}/{START_UP_SCRIPT}', 'w', encoding='utf-8') as f:
+        startupCode = Template(f'{shebang}{START_UP_CODE}').safe_substitute(mapping)
+        f.write(startupCode)
+
+    #--- Make the scripts executable under Linux.
     st = os.stat(f'{installDir}/{APP}')
     os.chmod(f'{installDir}/{APP}', st.st_mode | stat.S_IEXEC)
+    st = os.stat(f'{installDir}/{START_UP_SCRIPT}')
+    os.chmod(f'{installDir}/{START_UP_SCRIPT}', st.st_mode | stat.S_IEXEC)
 
     # Provide the sample files.
     output('Copying sample files ...')

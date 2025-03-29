@@ -1,11 +1,11 @@
 
-# Timelilne viewer
+# Timeline viewer
 
 **User guide**
 
 This page refers to the latest
 [nv_tlview](https://github.com/peter88213/timeline-view-tk/) release. You can
-open it with **Help \> TOnline help**.
+open it with **Help \> Online help**.
 
 
 ## Operation
@@ -34,15 +34,15 @@ open it with **Help \> TOnline help**.
     marker, then drag it with the mouse. This will increase or decrease
     the section\'s duration while keeping the start date/time.
 
-::: hint
-::: title
-Hint
-:::
+---
 
-\- Shifting operations with the mouse can be aborted with the `Esc` key
-before releasing the mouse button. - Shifting operations with the mouse
-can be undone with ![undo](_images/undo.png).
-:::
+**Hint** 
+
+- Shifting operations with the mouse can be aborted with the `Esc` key
+before releasing the mouse button. 
+- Shifting operations with the mouse can be undone with ![undo](images/undo.png).
+
+---
 
 ## Command reference
 
@@ -112,13 +112,13 @@ Standard
 
 :   Reset the cascading to default.
 
-::: hint
-::: title
-Hint
-:::
+---
 
-You can fine-tune the stacking limits with `Shift`-`Ctrl`-`Mousewheel`.
-:::
+**Hint** 
+
+- You can fine-tune the stacking limits with `Shift`-`Ctrl`-`Mousewheel`.
+
+---
 
 ### \"Help\" menu
 
@@ -128,63 +128,63 @@ Online help
 
 ### Buttons in the footer toolbar
 
-![rewindLeft](_images/rewindLeft.png) Go one page back
+![rewindLeft](images/rewindLeft.png) Go one page back
 
 :   Shift the timeline to go about one screen width back in time. Same
     as the \"back\" mouse button (Windows).
 
-![arrowLeft](_images/arrowLeft.png) Scroll back
+![arrowLeft](images/arrowLeft.png) Scroll back
 
 :   Shift the timeline to go 1/5 screen width back in time. You can move
     it more precisely with the mouse wheel.
 
-![goToFirst](_images/goToFirst.png) Go to the first event
+![goToFirst](images/goToFirst.png) Go to the first event
 
 :   Shift the timeline so that the earliest event is positioned near the
     left edge of the window.
 
-![goToLast](_images/goToLast.png) Go to the last event
+![goToLast](images/goToLast.png) Go to the last event
 
 :   Shift the timeline so that the latest event is positioned near the
     right edge of the window.
 
-![arrowRight](_images/arrowRight.png) Scroll forward
+![arrowRight](images/arrowRight.png) Scroll forward
 
 :   Shift the timeline to go 1/5 screen width forward in time. You can
     move it more precisely with the mouse wheel.
 
-![rewindRight](_images/rewindRight.png) Go one page forward
+![rewindRight](images/rewindRight.png) Go one page forward
 
 :   Shift the timeline to go about one screen width forward in time.
     Same as the \"forward\" mouse button (Windows).
 
-![arrowDown](_images/arrowDown.png) Reduce the time scale
+![arrowDown](images/arrowDown.png) Reduce the time scale
 
 :   Reduce the time scale in major steps. Fine scaling is meant to be
     done with the mouse wheel.
 
-![fitToWindow](_images/fitToWindow.png) Fit to window
+![fitToWindow](images/fitToWindow.png) Fit to window
 
 :   This sets the scale and moves the timeline, so that all sections
     with valid or substituted date/time information fit into the window.
 
-![arrowUp](_images/arrowUp.png) Increase the time scale
+![arrowUp](images/arrowUp.png) Increase the time scale
 
 :   Increase the time scale in major steps. Fine scaling is meant to be
     done with the mouse wheel.
 
-![undo](_images/undo.png) Undo the last change
+![undo](images/undo.png) Undo the last change
 
 :   This restores date/time/duration before the last mouse operation on
     a section.
 
-    ::: caution
-    ::: title
-    Caution
-    :::
+    ---
+    
+    **Caution**
 
     Interim changes to date/time/duration on the same section via the
     section properties in *novelibre* may get lost.
-    :::
+    
+    ---
 
 

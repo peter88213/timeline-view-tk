@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2025-03-29 18:36:05\n"
-"PO-Revision-Date: 2025-03-29 18:36:05\n"
+"Project-Id-Version: 0.2.0\n"
+"POT-Creation-Date: 2025-03-30 12:36:36\n"
+"PO-Revision-Date: 2025-03-30 12:36:36\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,12 @@ msgstr ""
 
 msgid "About Timeline viewer"
 msgstr "Über Timeline viewer"
+
+msgid "Cannot read file"
+msgstr "Kann Datei nicht lesen"
+
+msgid "Cannot write file"
+msgstr "Kann Datei nicht schreiben"
 
 msgid "Cascading"
 msgstr "Kaskadieren"
@@ -30,9 +36,6 @@ msgstr "Tag"
 
 msgid "Days"
 msgstr "Tage"
-
-msgid "Edit"
-msgstr "Bearbeiten"
 
 msgid "Exit"
 msgstr "Beenden"
@@ -70,6 +73,9 @@ msgstr "Neu"
 msgid "Online help"
 msgstr "Online-Hilfe"
 
+msgid "Open"
+msgstr "Öffnen"
+
 msgid "Open project file"
 msgstr "Projektdatei öffnen"
 
@@ -105,6 +111,9 @@ msgstr "Speichern"
 
 msgid "Save as..."
 msgstr "Speichern unter..."
+
+msgid "Save changes?"
+msgstr "Änderungen speichern?"
 
 msgid "Scale"
 msgstr "Maßstab"

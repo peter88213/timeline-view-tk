@@ -39,30 +39,30 @@ class TlviewerCommands:
             '<<create_project>>':self.create_project,
             '<<disable_undo>>': self.disable_undo_button,
             '<<enable_undo>>': self.enable_undo_button,
-            '<<fit_window>>': self.tlvCtrl.fit_window,
-            '<<go_to_first>>': self.tlvCtrl.go_to_first,
-            '<<go_to_last>>': self.tlvCtrl.go_to_last,
-            '<<increase_scale>>': self.tlvCtrl.increase_scale,
+            '<<fit_window>>': self.tlv.fit_window,
+            '<<go_to_first>>': self.tlv.go_to_first,
+            '<<go_to_last>>': self.tlv.go_to_last,
+            '<<increase_scale>>': self.tlv.increase_scale,
             '<<open_help>>': self.open_help,
             '<<open_homepage>>': self.open_homepage,
             '<<open_project>>': self.open_project,
             '<<open_project_file>>': self.open_project_file,
-            '<<page_back>>': self.tlvCtrl.page_back,
-            '<<page_forward>>': self.tlvCtrl.page_forward,
-            '<<reduce_scale>>': self.tlvCtrl.reduce_scale,
-            '<<refresh_view>>': self.tlvCtrl.refresh,
+            '<<page_back>>': self.tlv.page_back,
+            '<<page_forward>>': self.tlv.page_forward,
+            '<<reduce_scale>>': self.tlv.reduce_scale,
+            '<<refresh_view>>': self.tlv.refresh,
             '<<reload_project>>': self.reload_project,
-            '<<reset_casc>>': self.tlvCtrl.reset_casc,
+            '<<reset_casc>>': self.tlv.reset_casc,
             '<<save_as>>': self.save_as,
             '<<save_project>>': self.save_project,
-            '<<scroll_back>>': self.tlvCtrl.scroll_back,
-            '<<scroll_forward>>': self.tlvCtrl.scroll_forward,
-            '<<set_casc_relaxed>>': self.tlvCtrl.set_casc_relaxed,
-            '<<set_casc_tight>>': self.tlvCtrl.set_casc_tight,
-            '<<set_day_scale>>': self.tlvCtrl.set_day_scale,
-            '<<set_hour_scale>>': self.tlvCtrl.set_hour_scale,
-            '<<set_year_scale>>': self.tlvCtrl.set_year_scale,
-            '<<undo>>': self.tlvCtrl.undo,
+            '<<scroll_back>>': self.tlv.scroll_back,
+            '<<scroll_forward>>': self.tlv.scroll_forward,
+            '<<set_casc_relaxed>>': self.tlv.set_casc_relaxed,
+            '<<set_casc_tight>>': self.tlv.set_casc_tight,
+            '<<set_day_scale>>': self.tlv.set_day_scale,
+            '<<set_hour_scale>>': self.tlv.set_hour_scale,
+            '<<set_year_scale>>': self.tlv.set_year_scale,
+            '<<undo>>': self.tlv.undo,
             KEYS.OPEN_PROJECT[0]: self.open_project,
             KEYS.RELOAD_PROJECT[0]: self.reload_project,
             KEYS.SAVE_AS[0]: self.save_as,
@@ -70,19 +70,39 @@ class TlviewerCommands:
         }
         for sequence, callback in event_callbacks.items():
             self.root.bind(sequence, callback)
+        self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
 
     def close_project(self, event=None):
         """Close the novelibre project without saving and reset the user interface.
         
         To be extended by subclasses.
         """
-        # TODO: save changes on demand
+        if self.mdl.isModified:
+            answer = messagebox.askyesnocancel(
+                title=_('Close'),
+                message=_('Save changes?'),
+                )
+            if answer is None:
+                return
+
+            elif answer:
+                self.save_project_file(self.prjFilePath)
         self.mdl.clear()
         self.prjFilePath = None
         self.show_path()
         self.disable_menu()
 
     def create_project(self, event=None):
+        if self.mdl.isModified:
+            answer = messagebox.askyesnocancel(
+            title=_('New'),
+            message=_('Save changes?'),
+            )
+            if answer is None:
+                return
+
+            elif answer:
+                self.save_project_file(self.prjFilePath)
         if self.prjFilePath:
             initDir = os.path.dirname(self.prjFilePath)
         else:
@@ -99,7 +119,6 @@ class TlviewerCommands:
         if not filePath:
             return
 
-        # TODO: save changes on demand
         self.mdl.clear()
         self.prjFilePath = filePath
         self.show_path()
@@ -111,13 +130,22 @@ class TlviewerCommands:
             self.open_project_file()
 
     def disable_undo_button(self, event=None):
-        self.toolbar.undoButton.config(state='disabled')
+        self._toolbar.undoButton.config(state='disabled')
 
     def enable_undo_button(self, event=None):
-        self.toolbar.undoButton.config(state='normal')
+        self._toolbar.undoButton.config(state='normal')
 
     def on_quit(self, event=None):
-        self.close_project()
+        if self.mdl.isModified:
+            answer = messagebox.askyesnocancel(
+                title=_('Quit'),
+                message=_('Save changes?'),
+                )
+            if answer is None:
+                return
+
+            elif answer:
+                self.save_project_file(self.prjFilePath)
         sys.exit(0)
 
     def open_help(self, event=None):
@@ -127,6 +155,16 @@ class TlviewerCommands:
         webbrowser.open(HOME_URL)
 
     def open_project(self, event=None):
+        if self.mdl.isModified:
+            answer = messagebox.askyesnocancel(
+            title=_('Open'),
+            message=_('Save changes?'),
+            )
+            if answer is None:
+                return
+
+            elif answer:
+                self.save_project_file(self.prjFilePath)
         if self.prjFilePath:
             initDir = os.path.dirname(self.prjFilePath)
         else:
@@ -144,8 +182,17 @@ class TlviewerCommands:
             self.read_data(filePath)
 
     def open_project_file(self, event=None):
+        if self.mdl.isModified:
+            answer = messagebox.askyesnocancel(
+            title=_('Open project file'),
+            message=_('Save changes?'),
+            )
+            if answer is None:
+                return
+
+            elif answer:
+                self.save_project_file(self.prjFilePath)
         if self.prjFilePath:
-            # TODO: save changes on demand
             open_document(self.prjFilePath)
 
     def open_section(self, scId):
@@ -184,7 +231,7 @@ class TlviewerCommands:
             except Exception as ex:
                 messagebox.showerror(
                     self.root.title(),
-                    message='Cannot save file',
+                    message=_('Cannot write file'),
                     detail=str(ex),
                     )
 

@@ -22,20 +22,17 @@ class TlviewerMenu(tk.Menu):
         self.fileMenu.add_command(label=_('New'), command=self._event('<<create_project>>'))
         self.fileMenu.add_command(label=_('Open...'), accelerator=KEYS.OPEN_PROJECT[1], command=self._event('<<open_project>>'))
         self.fileMenu.add_command(label=_('Reload'), accelerator=KEYS.RELOAD_PROJECT[1], command=self._event('<<reload_project>>'))
+        self.fileMenu.add_separator()
+        self.fileMenu.add_command(label=_('Open project file'), command=self._event('<<open_project_file>>'))
+        self.fileMenu.add_separator()
         self.fileMenu.add_command(label=_('Save'), accelerator=KEYS.SAVE_PROJECT[1], command=self._event('<<save_project>>'))
         self.fileMenu.add_command(label=_('Save as...'), accelerator=KEYS.SAVE_AS[1], command=self._event('<<save_as>>'))
         self.fileMenu.add_command(label=_('Close'), command=self._event('<<close_project>>'))
-        self.fileMenu.entryconfig(_('Close'), state='disabled')
         if PLATFORM == 'win':
             label = _('Exit')
         else:
             label = _('Quit')
         self.fileMenu.add_command(label=label, accelerator=KEYS.QUIT_PROGRAM[1], command=self._event('<<close_view>>'))
-
-        # "Edit" menu.
-        self.editMenu = tk.Menu(self, tearoff=0)
-        self.add_cascade(label=_('Edit'), menu=self.editMenu)
-        self.editMenu.add_command(label=_('Open project file'), command=self._event('<<open_project_file>>'))
 
         # "Go to" menu.
         self.goMenu = tk.Menu(self, tearoff=0)
@@ -66,6 +63,10 @@ class TlviewerMenu(tk.Menu):
         self.cascadeMenu.add_command(label=_('Relaxed'), command=self._event('<<set_casc_relaxed>>'))
         self.cascadeMenu.add_command(label=_('Standard'), command=self._event('<<reset_casc>>'))
 
+        # "Tools" menu.
+        # self.toolsMenu = tk.Menu(self, tearoff=0)
+        # self.add_cascade(label=_('Tools'), menu=self.toolsMenu)
+
         # "Help" menu.
         self.helpMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label=_('Help'), menu=self.helpMenu)
@@ -75,6 +76,7 @@ class TlviewerMenu(tk.Menu):
 
         self._fileMenuNormalOpen = [
             _('Close'),
+            _('Open project file'),
             _('Reload'),
             _('Save as...'),
             _('Save'),
@@ -84,6 +86,7 @@ class TlviewerMenu(tk.Menu):
             _('Scale'),
             _('Cascading'),
         ]
+        self.disable_menu()
 
     def _event(self, sequence):
 

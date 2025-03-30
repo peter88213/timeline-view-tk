@@ -50,26 +50,26 @@ class TimelineViewer(TlviewerCommands):
         settings = {
             'substitute_missing_time':tk.BooleanVar(value=SUBSTITUTE_MISSING_TIME),
         }
-        self.mainMenu = TlviewerMenu(self.root, settings)
-        self.root.config(menu=self.mainMenu)
+        self._mainMenu = TlviewerMenu(self.root, settings)
+        self.root.config(menu=self._mainMenu)
 
         self.mdl = TlvDataModel()
         mainWindow = ttk.Frame(self.root)
         mainWindow.pack(fill='both', expand=True)
-        self.pathBar = TlviewerPathBar(mainWindow, self.mdl, text='', anchor='w', padx=5, pady=3)
-        self.pathBar.pack(side='bottom', expand=False, fill='x')
-        self.mdl.add_observer(self.pathBar)
-        self.toolbar = TlviewerToolbar(mainWindow, largeIcons=False, enableHovertips=True)
-        self.toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
+        self._pathBar = TlviewerPathBar(mainWindow, self.mdl, text='', anchor='w', padx=5, pady=3)
+        self._pathBar.pack(side='bottom', expand=False, fill='x')
+        self.mdl.add_observer(self._pathBar)
+        self._toolbar = TlviewerToolbar(mainWindow, largeIcons=False, enableHovertips=True)
+        self._toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
 
-        self.tlvCtrl = TlvController(
+        self.tlv = TlvController(
             self.mdl,
             mainWindow,
             LOCALIZE_DATE,
             settings,
             onDoubleClick=self.open_section,
             )
-        self.mdl.add_observer(self.tlvCtrl)
+        self.mdl.add_observer(self.tlv)
         self.bind_events()
         self.prjFilePath = None
 
@@ -78,35 +78,38 @@ class TimelineViewer(TlviewerCommands):
         
         To be extended by subclasses.
         """
-        self.mainMenu.disable_menu()
-        self.toolbar.disable_menu()
+        self._mainMenu.disable_menu()
+        self._toolbar.disable_menu()
 
     def enable_menu(self):
         """Enable menu entries when a project is open.
         
         To be extended by subclasses.
         """
-        self.mainMenu.enable_menu()
-        self.toolbar.enable_menu()
+        self._mainMenu.enable_menu()
+        self._toolbar.enable_menu()
 
     def read_data(self, filePath):
-        if self.prjFilePath is not None:
-            self.close_project()
+        self.mdl.clear()
         try:
             self.mdl.read_data(filePath)
         except Exception as ex:
+            self.mdl.clear()
+            self.prjFilePath = None
+            self.disable_menu()
             messagebox.showerror(
                 self.root.title(),
-                message='Cannot load file',
+                message=_('Cannot read file'),
                 detail=str(ex),
                 )
         else:
             self.prjFilePath = filePath
+        finally:
             self.refresh()
 
     def refresh(self, event=None):
-        self.tlvCtrl.refresh()
-        self.tlvCtrl.fit_window()
+        self.tlv.refresh()
+        self.tlv.fit_window()
         self.enable_menu()
         self.show_path()
 
@@ -116,7 +119,7 @@ class TimelineViewer(TlviewerCommands):
             filePath = ''
         else:
             filePath = os.path.normpath(self.prjFilePath)
-        self.pathBar.config(text=filePath)
+        self._pathBar.config(text=filePath)
 
     def start(self):
         self.root.mainloop()

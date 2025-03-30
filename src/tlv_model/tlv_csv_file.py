@@ -27,7 +27,7 @@ class TlvCsvFile(TlvFile):
     ]
 
     def read(self):
-        with open(self.filePath, newline='') as f:
+        with open(self.filePath, encoding='utf-8', newline='') as f:
             dataReader = csv.reader(f)
             dataTable = list(dataReader)
         if dataTable[0] != self.COLUMNS:
@@ -87,6 +87,6 @@ class TlvCsvFile(TlvFile):
                 '',
                 ])
 
-        with open(self.filePath, 'w', newline='') as f:
+        with open(self.filePath, 'w', encoding='utf-8', newline='') as f:
             dataWriter = csv.writer(f, dialect='excel')
             dataWriter.writerows(dataTable)

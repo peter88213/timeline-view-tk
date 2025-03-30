@@ -44,7 +44,7 @@ def main(moFile, app='', version='unknown', languages='', translator='unknown'):
         'de',
         app=app,
         appVersion=version,
-        json=False,
+        json=True,
         languages=languages,
         translator=translator
         ):

@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1.0\n"
-"POT-Creation-Date: 2025-03-29 18:36:05\n"
+"Project-Id-Version: 0.2.0\n"
+"POT-Creation-Date: 2025-03-30 12:36:36\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -15,6 +15,12 @@ msgstr ""
 
 
 msgid "About Timeline viewer"
+msgstr ""
+
+msgid "Cannot read file"
+msgstr ""
+
+msgid "Cannot write file"
 msgstr ""
 
 msgid "Cascading"
@@ -30,9 +36,6 @@ msgid "Day"
 msgstr ""
 
 msgid "Days"
-msgstr ""
-
-msgid "Edit"
 msgstr ""
 
 msgid "Exit"
@@ -71,6 +74,9 @@ msgstr ""
 msgid "Online help"
 msgstr ""
 
+msgid "Open"
+msgstr ""
+
 msgid "Open project file"
 msgstr ""
 
@@ -105,6 +111,9 @@ msgid "Save"
 msgstr ""
 
 msgid "Save as..."
+msgstr ""
+
+msgid "Save changes?"
 msgstr ""
 
 msgid "Scale"

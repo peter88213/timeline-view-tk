@@ -5,6 +5,13 @@
 ## Changelog
 
 
+### Planned features
+
+See the [GitHub "Features" project](https://github.com/users/peter88213/projects/18).
+
+---
+
+
 ### Version 0.2.0
 
 - Reading and writing csv utf-8 encoded.

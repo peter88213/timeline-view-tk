@@ -49,6 +49,7 @@ class TlvDataModel:
         for scId in list(self.sections):
             del(self.sections[scId])
         self.referenceDate = None
+        self.isModified = False
 
     def delete_observer(self, client):
         """Remove an observer instance reference from the list."""
@@ -66,8 +67,10 @@ class TlvDataModel:
     def read_data(self, filePath):
         self.dataFile.filePath = filePath
         self.dataFile.read()
+        self.isModified = False
 
     def write_data(self, filePath):
         self.dataFile.filePath = filePath
         self.dataFile.write()
+        self.isModified = False
 

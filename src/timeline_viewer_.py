@@ -28,6 +28,7 @@ from tlv_model.tlv_data_model import TlvDataModel
 from tlviewer.tlviewer_commands import TlviewerCommands
 from tlviewer.tlviewer_menu import TlviewerMenu
 from tlviewer.tlviewer_toolbar import TlviewerToolbar
+from tlviewer.tlviewer_path_bar import TlviewerPathBar
 
 WINDOW_GEOMETRY = '1200x800'
 SUBSTITUTE_MISSING_TIME = True
@@ -55,8 +56,9 @@ class TimelineViewer(TlviewerCommands):
         self.mdl = TlvDataModel()
         mainWindow = ttk.Frame(self.root)
         mainWindow.pack(fill='both', expand=True)
-        self.pathBar = tk.Label(mainWindow, text='', anchor='w', padx=5, pady=3)
+        self.pathBar = TlviewerPathBar(mainWindow, self.mdl, text='', anchor='w', padx=5, pady=3)
         self.pathBar.pack(side='bottom', expand=False, fill='x')
+        self.mdl.add_observer(self.pathBar)
         self.toolbar = TlviewerToolbar(mainWindow, largeIcons=False, enableHovertips=True)
         self.toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
 

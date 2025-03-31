@@ -14,7 +14,6 @@ from nvtlview.tlv_locale import _
 from tlviewer.doc_open import open_document
 from tlviewer.tlviewer_globals import HELP_URL
 from tlviewer.tlviewer_globals import HOME_URL
-from tlviewer.tlviewer_globals import prefs
 
 
 class TlviewerCommands:
@@ -27,7 +26,8 @@ class TlviewerCommands:
         messagebox.showinfo(
             message='Timeline viewer',
             detail=__doc__,
-            title=_('About Timeline viewer')
+            title=_('About Timeline viewer'),
+            parent=self,
             )
 
     def bind_events(self):
@@ -134,29 +134,6 @@ class TlviewerCommands:
 
     def enable_undo_button(self, event=None):
         self._toolbar.undoButton.config(state='normal')
-
-    def on_quit(self, event=None):
-        try:
-            if self.mdl.isModified:
-                answer = messagebox.askyesnocancel(
-                    title=_('Quit'),
-                    message=_('Save changes?'),
-                    )
-                if answer is None:
-                    return
-
-                elif answer:
-                    self.save_project_file(self.prjFilePath)
-            prefs['substitute_missing_time'] = self.settings['substitute_missing_time'].get()
-            prefs['window_geometry'] = self.root.winfo_geometry()
-            self.tlv.on_quit()
-        except Exception as ex:
-            self._ui.show_error(
-                message=_('Unhandled exception on exit'),
-                detail=str(ex)
-                )
-        finally:
-            self.root.quit()
 
     def open_help(self, event=None):
         webbrowser.open(HELP_URL)

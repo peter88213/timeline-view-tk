@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.3.0\n"
-"POT-Creation-Date: 2025-03-31 14:23:35\n"
+"Project-Id-Version: 0.4.0\n"
+"POT-Creation-Date: 2025-03-31 15:30:35\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -38,6 +38,9 @@ msgstr ""
 msgid "Days"
 msgstr ""
 
+msgid "Error"
+msgstr ""
+
 msgid "Exit"
 msgstr ""
 
@@ -62,7 +65,13 @@ msgstr ""
 msgid "Hours"
 msgstr ""
 
+msgid "Icon size changed"
+msgstr ""
+
 msgid "Increase scale"
+msgstr ""
+
+msgid "Large toolbar icons"
 msgstr ""
 
 msgid "Last event"
@@ -84,6 +93,9 @@ msgid "Open the file for data entry?"
 msgstr ""
 
 msgid "Open..."
+msgstr ""
+
+msgid "Options"
 msgstr ""
 
 msgid "Page back"
@@ -137,10 +149,13 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
-msgid "Substitutions"
+msgid "The change takes effect after next startup"
 msgstr ""
 
 msgid "Tight"
+msgstr ""
+
+msgid "Tools"
 msgstr ""
 
 msgid "Undo"

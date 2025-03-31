@@ -23,12 +23,13 @@ from tkinter import messagebox
 from tkinter import ttk
 
 from nvtlview.tlv_controller import TlvController
+from nvtlview.tlv_locale import _
 import tkinter as tk
 from tlv_model.tlv_data_model import TlvDataModel
 from tlviewer.configuration import Configuration
 from tlviewer.tlviewer_commands import TlviewerCommands
-from tlviewer.tlviewer_globals import prefs
 from tlviewer.tlviewer_globals import INSTALL_DIR
+from tlviewer.tlviewer_globals import prefs
 from tlviewer.tlviewer_menu import TlviewerMenu
 from tlviewer.tlviewer_path_bar import TlviewerPathBar
 from tlviewer.tlviewer_toolbar import TlviewerToolbar
@@ -58,8 +59,8 @@ class TimelineViewer(TlviewerCommands):
         self.root.geometry(prefs['window_geometry'])
 
         self.settings = {
-            'substitute_missing_time':tk.BooleanVar(value=prefs['substitute_missing_time'],
-            ),
+            'substitute_missing_time':tk.BooleanVar(value=prefs['substitute_missing_time']),
+            'large_icons':tk.BooleanVar(value=prefs['large_icons']),
         }
         self._mainMenu = TlviewerMenu(self.root, self.settings)
         self.root.config(menu=self._mainMenu)
@@ -99,6 +100,31 @@ class TimelineViewer(TlviewerCommands):
         """
         self._mainMenu.enable_menu()
         self._toolbar.enable_menu()
+
+    def on_quit(self, event=None):
+        try:
+            if self.mdl.isModified:
+                answer = messagebox.askyesnocancel(
+                    title=_('Quit'),
+                    message=_('Save changes?'),
+                    )
+                if answer is None:
+                    return
+
+                elif answer:
+                    self.save_project_file(self.prjFilePath)
+            prefs['substitute_missing_time'] = self.settings['substitute_missing_time'].get()
+            prefs['large_icons'] = self.settings['large_icons'].get()
+            prefs['window_geometry'] = self.root.winfo_geometry()
+            self.tlv.on_quit()
+        except Exception as ex:
+            messagebox.showerror(
+                message=_('Unhandled exception on exit'),
+                detail=str(ex),
+                title=_('Error'),
+                )
+        finally:
+            self.root.quit()
 
     def read_data(self, filePath):
         self.mdl.clear()

@@ -4,10 +4,12 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from nvtlview.tlv_locale import _
-import tkinter as tk
+from tkinter import messagebox
+
 from nvtlview.platform.platform_settings import KEYS
 from nvtlview.platform.platform_settings import PLATFORM
+from nvtlview.tlv_locale import _
+import tkinter as tk
 
 
 class TlviewerMenu(tk.Menu):
@@ -48,14 +50,6 @@ class TlviewerMenu(tk.Menu):
         self.scaleMenu.add_command(label=_('Years'), command=self._event('<<set_year_scale>>'))
         self.scaleMenu.add_command(label=_('Fit to window'), command=self._event('<<fit_window>>'))
 
-        # "Substitutions" menu.
-        self.substMenu = tk.Menu(self, tearoff=0)
-        self.add_cascade(label=_('Substitutions'), menu=self.substMenu)
-        self.substMenu.add_checkbutton(
-            label=_('Use 00:00 for missing times'),
-            variable=self.settings['substitute_missing_time'],
-            command=self._event('<<refresh_view>>')
-            )
         # "Cascading" menu.
         self.cascadeMenu = tk.Menu(self, tearoff=0)
         self.add_cascade(label=_('Cascading'), menu=self.cascadeMenu)
@@ -64,8 +58,22 @@ class TlviewerMenu(tk.Menu):
         self.cascadeMenu.add_command(label=_('Standard'), command=self._event('<<reset_casc>>'))
 
         # "Tools" menu.
-        # self.toolsMenu = tk.Menu(self, tearoff=0)
-        # self.add_cascade(label=_('Tools'), menu=self.toolsMenu)
+        self.toolsMenu = tk.Menu(self, tearoff=0)
+        self.add_cascade(label=_('Tools'), menu=self.toolsMenu)
+
+        # "Options" menu.
+        self.optionsMenu = tk.Menu(self, tearoff=0)
+        self.toolsMenu.add_cascade(label=_('Options'), menu=self.optionsMenu)
+        self.optionsMenu.add_checkbutton(
+            label=_('Use 00:00 for missing times'),
+            variable=self.settings['substitute_missing_time'],
+            command=self._event('<<refresh_view>>')
+            )
+        self.optionsMenu.add_checkbutton(
+            label=_('Large toolbar icons'),
+            variable=self.settings['large_icons'],
+            command=self._change_icon_size,
+            )
 
         # "Help" menu.
         self.helpMenu = tk.Menu(self, tearoff=0)
@@ -109,3 +117,11 @@ class TlviewerMenu(tk.Menu):
             self.fileMenu.entryconfig(entry, state='normal')
         for entry in self._mainMenuNormalOpen:
             self.entryconfig(entry, state='normal')
+
+    def _change_icon_size(self):
+        messagebox.showinfo(
+            message=_('Icon size changed'),
+            detail=f"{_('The change takes effect after next startup')}.",
+            title=_('Options'),
+            parent=self,
+            )

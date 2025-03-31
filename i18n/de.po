@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.3.0\n"
-"POT-Creation-Date: 2025-03-31 14:23:35\n"
-"PO-Revision-Date: 2025-03-31 14:23:35\n"
+"Project-Id-Version: 0.4.0\n"
+"POT-Creation-Date: 2025-03-31 15:30:35\n"
+"PO-Revision-Date: 2025-03-31 15:30:35\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -37,6 +37,9 @@ msgstr "Tag"
 msgid "Days"
 msgstr "Tage"
 
+msgid "Error"
+msgstr "Fehler"
+
 msgid "Exit"
 msgstr "Beenden"
 
@@ -61,8 +64,14 @@ msgstr "Homepage"
 msgid "Hours"
 msgstr "Stunden"
 
+msgid "Icon size changed"
+msgstr "Symbolgröße geändert"
+
 msgid "Increase scale"
 msgstr "Maßstab vergrößern"
+
+msgid "Large toolbar icons"
+msgstr "Große Symbole in der Werkzeugleiste"
 
 msgid "Last event"
 msgstr "Letztes Ereignis"
@@ -84,6 +93,9 @@ msgstr "Datei zur Dateneingabe öffnen?"
 
 msgid "Open..."
 msgstr "Öffnen..."
+
+msgid "Options"
+msgstr "Optionen"
 
 msgid "Page back"
 msgstr "Seite zurück"
@@ -136,11 +148,14 @@ msgstr "Verschiebe Anfang"
 msgid "Standard"
 msgstr "Normal"
 
-msgid "Substitutions"
-msgstr "Ersetzungen"
+msgid "The change takes effect after next startup"
+msgstr "Die Änderung wird beim nächsten Programmstart wirksam"
 
 msgid "Tight"
 msgstr "Dicht"
+
+msgid "Tools"
+msgstr "Extras"
 
 msgid "Undo"
 msgstr "Rückgängig"

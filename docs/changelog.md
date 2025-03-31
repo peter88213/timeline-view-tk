@@ -11,12 +11,18 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+### Version 0.3.0
+
+- The configuration is persistent now. Closes #2
+- Loading the last file on startup. Closes #3
+- Updated the *nvtlview* library to *nv_tlv* 5.2.5.
+
 
 ### Version 0.2.0
 
 - Reading and writing csv utf-8 encoded.
 - Showing the modification status in the path bar.
-- Before changing or closing the project, ask for saving changes. 
+- Before changing or closing the project, ask for saving changes. Closes #1
 - Moved the "Open project file' command to the "File" menu.
 
 

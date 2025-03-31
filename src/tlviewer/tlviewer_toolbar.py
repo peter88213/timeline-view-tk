@@ -4,30 +4,26 @@ Copyright (c) 2025 Peter Triesberger
 For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
-from pathlib import Path
 from tkinter import ttk
 
 from nvtlview.tlv_locale import _
 import tkinter as tk
+from tlviewer.tlviewer_globals import INSTALL_DIR
+from tlviewer.tlviewer_globals import prefs
 from tlviewer.tooltip import Hovertip
 
 
 class TlviewerToolbar(ttk.Frame):
 
-    def __init__(self, master, largeIcons, enableHovertips):
+    def __init__(self, master):
         ttk.Frame.__init__(self, master)
 
         # Prepare the toolbar icons.
-        if largeIcons:
+        if prefs['large_icons']:
             size = 24
         else:
             size = 16
-        try:
-            homeDir = str(Path.home()).replace('\\', '/')
-            iconPath = f'{homeDir}/.tlviewer/icons/{size}'
-        except:
-            iconPath = None
-
+        iconPath = f'{INSTALL_DIR}/icons/{size}'
         self._toolbarIcons = {}
         icons = [
             'rewindLeft',
@@ -158,7 +154,7 @@ class TlviewerToolbar(ttk.Frame):
         self.undoButton.image = self._toolbarIcons['undo']
 
         # Initialize tooltips.
-        if not enableHovertips:
+        if not prefs['enable_hovertips']:
             return
 
         Hovertip(rewindLeftButton, rewindLeftButton['text'])

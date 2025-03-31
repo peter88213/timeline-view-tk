@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.2.0\n"
-"POT-Creation-Date: 2025-03-30 12:36:36\n"
-"PO-Revision-Date: 2025-03-30 12:36:36\n"
+"Project-Id-Version: 0.3.0\n"
+"POT-Creation-Date: 2025-03-31 14:23:35\n"
+"PO-Revision-Date: 2025-03-31 14:23:35\n"
 "Last-Translator: Peter Triesberger\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -144,6 +144,9 @@ msgstr "Dicht"
 
 msgid "Undo"
 msgstr "Rückgängig"
+
+msgid "Unhandled exception on exit"
+msgstr "Unbehandelte Ausnahme beim Beenden"
 
 msgid "Use 00:00 for missing times"
 msgstr "Benutze 00:00 für fehlende Zeiten"

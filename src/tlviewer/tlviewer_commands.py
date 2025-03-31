@@ -5,7 +5,6 @@ For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
-import sys
 from tkinter import filedialog
 from tkinter import messagebox
 import webbrowser
@@ -15,6 +14,7 @@ from nvtlview.tlv_locale import _
 from tlviewer.doc_open import open_document
 from tlviewer.tlviewer_globals import HELP_URL
 from tlviewer.tlviewer_globals import HOME_URL
+from tlviewer.tlviewer_globals import prefs
 
 
 class TlviewerCommands:
@@ -136,17 +136,27 @@ class TlviewerCommands:
         self._toolbar.undoButton.config(state='normal')
 
     def on_quit(self, event=None):
-        if self.mdl.isModified:
-            answer = messagebox.askyesnocancel(
-                title=_('Quit'),
-                message=_('Save changes?'),
-                )
-            if answer is None:
-                return
+        try:
+            if self.mdl.isModified:
+                answer = messagebox.askyesnocancel(
+                    title=_('Quit'),
+                    message=_('Save changes?'),
+                    )
+                if answer is None:
+                    return
 
-            elif answer:
-                self.save_project_file(self.prjFilePath)
-        sys.exit(0)
+                elif answer:
+                    self.save_project_file(self.prjFilePath)
+            prefs['substitute_missing_time'] = self.settings['substitute_missing_time'].get()
+            prefs['window_geometry'] = self.root.winfo_geometry()
+            self.tlv.on_quit()
+        except Exception as ex:
+            self._ui.show_error(
+                message=_('Unhandled exception on exit'),
+                detail=str(ex)
+                )
+        finally:
+            self.root.quit()
 
     def open_help(self, event=None):
         webbrowser.open(HELP_URL)

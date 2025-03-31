@@ -12,6 +12,11 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.4.2
+
+- Updated the *nvtlview* library to *nv_tlv* 5.3.0.
+
+
 ### Version 0.4.1
 
 - Fixed a regression from 0.4.0 where the "About" dialog does not show up.

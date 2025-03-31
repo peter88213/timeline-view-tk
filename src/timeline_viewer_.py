@@ -58,11 +58,7 @@ class TimelineViewer(TlviewerCommands):
         self.root.title('Timeline viewer')
         self.root.geometry(prefs['window_geometry'])
 
-        self.settings = {
-            'substitute_missing_time':tk.BooleanVar(value=prefs['substitute_missing_time']),
-            'large_icons':tk.BooleanVar(value=prefs['large_icons']),
-        }
-        self._mainMenu = TlviewerMenu(self.root, self.settings)
+        self._mainMenu = TlviewerMenu(self.root)
         self.root.config(menu=self._mainMenu)
 
         self.mdl = TlvDataModel()
@@ -77,8 +73,7 @@ class TimelineViewer(TlviewerCommands):
         self.tlv = TlvController(
             self.mdl,
             mainWindow,
-            prefs['localize_date'],
-            self.settings,
+            prefs,
             onDoubleClick=self.open_section,
             )
         self.mdl.add_observer(self.tlv)
@@ -113,8 +108,6 @@ class TimelineViewer(TlviewerCommands):
 
                 elif answer:
                     self.save_project_file(self.prjFilePath)
-            prefs['substitute_missing_time'] = self.settings['substitute_missing_time'].get()
-            prefs['large_icons'] = self.settings['large_icons'].get()
             prefs['window_geometry'] = self.root.winfo_geometry()
             self.tlv.on_quit()
         except Exception as ex:

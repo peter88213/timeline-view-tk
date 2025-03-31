@@ -10,13 +10,13 @@ from nvtlview.platform.platform_settings import KEYS
 from nvtlview.platform.platform_settings import PLATFORM
 from nvtlview.tlv_locale import _
 import tkinter as tk
+from tlviewer.tlviewer_globals import prefs
 
 
 class TlviewerMenu(tk.Menu):
 
-    def __init__(self, master, settings, cnf={}, **kw):
+    def __init__(self, master, cnf={}, **kw):
         super().__init__(master=master, cnf=cnf, **kw)
-        self.settings = settings
 
         # "File" menu.
         self.fileMenu = tk.Menu(self, tearoff=0)
@@ -64,14 +64,17 @@ class TlviewerMenu(tk.Menu):
         # "Options" menu.
         self.optionsMenu = tk.Menu(self, tearoff=0)
         self.toolsMenu.add_cascade(label=_('Options'), menu=self.optionsMenu)
+
+        self._substituteMissingTime = tk.BooleanVar(value=prefs['substitute_missing_time'])
         self.optionsMenu.add_checkbutton(
             label=_('Use 00:00 for missing times'),
-            variable=self.settings['substitute_missing_time'],
-            command=self._event('<<refresh_view>>')
+            variable=self._substituteMissingTime,
+            command=self._change_substitution_mode,
             )
+        self._largeIcons = tk.BooleanVar(value=prefs['large_icons'])
         self.optionsMenu.add_checkbutton(
             label=_('Large toolbar icons'),
-            variable=self.settings['large_icons'],
+            variable=self._largeIcons,
             command=self._change_icon_size,
             )
 
@@ -119,8 +122,14 @@ class TlviewerMenu(tk.Menu):
             self.entryconfig(entry, state='normal')
 
     def _change_icon_size(self):
+        prefs['large_icons'] = self._largeIcons.get()
         messagebox.showinfo(
             message=_('Icon size changed'),
             detail=f"{_('The change takes effect after next startup')}.",
             title=_('Options'),
             )
+
+    def _change_substitution_mode(self):
+        prefs['substitute_missing_time'] = self._substituteMissingTime.get()
+        root = self.master.winfo_toplevel()
+        root.event_generate('<<refresh_view>>')

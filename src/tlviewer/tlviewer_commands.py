@@ -27,7 +27,6 @@ class TlviewerCommands:
             message='Timeline viewer',
             detail=__doc__,
             title=_('About Timeline viewer'),
-            parent=self,
             )
 
     def bind_events(self):

@@ -123,5 +123,4 @@ class TlviewerMenu(tk.Menu):
             message=_('Icon size changed'),
             detail=f"{_('The change takes effect after next startup')}.",
             title=_('Options'),
-            parent=self,
             )

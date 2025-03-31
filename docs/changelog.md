@@ -11,6 +11,12 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+
+### Version 0.4.1
+
+- Fixed a regression from 0.4.0 where the "About" dialog does not show up.
+
+
 ### Version 0.4.0
 
 - Renamed the "Substitutions" submenu to "Options" and placed it in the new "Tools" menu.

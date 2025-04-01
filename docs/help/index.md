@@ -4,7 +4,7 @@
 **User guide**
 
 This page refers to the latest
-[nv_tlview](https://github.com/peter88213/timeline-view-tk/) release. You can
+[timeline-view-tk](https://github.com/peter88213/timeline-view-tk/) release. You can
 open it with **Help \> Online help**.
 
 

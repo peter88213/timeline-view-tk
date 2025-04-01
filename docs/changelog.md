@@ -11,6 +11,10 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+### Version 0.4.3
+
+Added a window icon.
+
 
 ### Version 0.4.2
 

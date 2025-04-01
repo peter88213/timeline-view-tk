@@ -131,7 +131,6 @@ def install(novxPath, zipped):
     # Delete the old version, but retain configuration, if any.
     rmtree(f'{installDir}/icons', ignore_errors=True)
     rmtree(f'{installDir}/sample', ignore_errors=True)
-    rmtree(f'{installDir}/locale', ignore_errors=True)
     with os.scandir(installDir) as files:
         for file in files:
             if 'config' in file.name:

@@ -33,6 +33,7 @@ from tlviewer.tlviewer_globals import prefs
 from tlviewer.tlviewer_menu import TlviewerMenu
 from tlviewer.tlviewer_path_bar import TlviewerPathBar
 from tlviewer.tlviewer_toolbar import TlviewerToolbar
+from tlviewer.set_icon_tk import set_icon
 
 SETTINGS = dict(
     last_open='',
@@ -57,6 +58,7 @@ class TimelineViewer(TlviewerCommands):
         self.root = tk.Tk()
         self.root.title('Timeline viewer')
         self.root.geometry(prefs['window_geometry'])
+        set_icon(self.root, icon='tlv')
 
         self._mainMenu = TlviewerMenu(self.root)
         self.root.config(menu=self._mainMenu)

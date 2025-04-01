@@ -1,9 +1,9 @@
-"""novx_xtg installer library module. 
+"""timeline_viewer installer library module. 
 
 Version @release
 
 Copyright (c) 2021 Peter Triesberger
-For further information see https://github.com/peter88213/novx_xtg
+For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from shutil import copytree
@@ -24,6 +24,7 @@ except ModuleNotFoundError:
 
 APPNAME = 'timeline_viewer'
 VERSION = ' @release'
+INSTALL_DIR = '.tlviewer'
 START_UP_SCRIPT = 'run.pyw'
 APP = f'{APPNAME}.py'
 INI_FILE = f'{APPNAME}.ini'
@@ -202,14 +203,14 @@ def main(zipped=True):
 
     # Run the installation.
     homePath = str(Path.home()).replace('\\', '/')
-    novxlibPath = f'{homePath}/.tlviewer/'
+    novxlibPath = f'{homePath}/{INSTALL_DIR}/'
     try:
         install(novxlibPath, zipped)
     except Exception as ex:
         output(str(ex))
 
     # Show options: open installation folders or quit.
-    root.openButton = Button(text="Open installation folder", command=lambda: open_folder(f'{homePath}/.novx/{APPNAME}'))
+    root.openButton = Button(text="Open installation folder", command=lambda: open_folder(f'{homePath}/{INSTALL_DIR}'))
     root.openButton.config(height=1, width=30)
     root.openButton.pack(padx=5, pady=5)
     root.quitButton = Button(text="Quit", command=quit)

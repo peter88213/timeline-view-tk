@@ -72,7 +72,7 @@ class TlviewerCommands:
         self.root.protocol("WM_DELETE_WINDOW", self.on_quit)
 
     def close_project(self, event=None):
-        """Close the novelibre project without saving and reset the user interface.
+        """Close the project without saving and reset the user interface.
         
         To be extended by subclasses.
         """

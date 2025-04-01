@@ -51,7 +51,7 @@ There is a [German language pack](https://github.com/peter88213/tlviewer_de) to 
 
 [Changelog](docs/changelog.md)
 
-[Feedback](https://github.com/peter88213/novelibre/discussions)
+[Feedback](https://github.com/peter88213/timeline-view-tk/discussions)
 
 ---
 

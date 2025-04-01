@@ -1,8 +1,8 @@
-"""Build the novelibre release package.
+"""Build the timeline-view-tk release package.
 
 Note: VERSION must be updated manually before starting this script.
         
-For further information see https://github.com/peter88213/novelibre
+For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os

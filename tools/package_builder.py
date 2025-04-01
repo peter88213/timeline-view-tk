@@ -1,7 +1,7 @@
-"""Provide a class for novelibre application and plugin package building. 
+"""Provide a class for timeline-view-tk application and plugin package building. 
 
 Copyright (c) 2025 Peter Triesberger
-For further information see https://github.com/peter88213/novelibre
+For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 from abc import ABC

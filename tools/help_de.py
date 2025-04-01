@@ -1,7 +1,7 @@
 """Translate GUI terms in helpfiles to German 
 
 Copyright (c) 2025 Peter Triesberger
-For further information see https://github.com/peter88213/novelibre
+For further information see https://github.com/peter88213/timeline-view-tk
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 import os
@@ -42,7 +42,7 @@ def read_translations(filePath):
 
 translations = {}
 read_translations('../i18n/de.po')
-read_translations('../../novelibre/i18n/de.po')
+read_translations('../../timeline-view-tk/i18n/de.po')
 
 # Sort the terms by length to minimize errors.
 sortedTranslations = sorted(translations, key=len, reverse=True)

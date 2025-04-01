@@ -25,15 +25,16 @@ from tkinter import ttk
 from nvtlview.tlv_controller import TlvController
 from nvtlview.tlv_locale import _
 import tkinter as tk
+from tlv_model.tlv_csv_file import TlvCsvFile
 from tlv_model.tlv_data_model import TlvDataModel
 from tlviewer.configuration import Configuration
+from tlviewer.set_icon_tk import set_icon
 from tlviewer.tlviewer_commands import TlviewerCommands
 from tlviewer.tlviewer_globals import INSTALL_DIR
 from tlviewer.tlviewer_globals import prefs
 from tlviewer.tlviewer_menu import TlviewerMenu
 from tlviewer.tlviewer_path_bar import TlviewerPathBar
 from tlviewer.tlviewer_toolbar import TlviewerToolbar
-from tlviewer.set_icon_tk import set_icon
 
 SETTINGS = dict(
     last_open='',
@@ -51,6 +52,16 @@ class TimelineViewer(TlviewerCommands):
 
     def __init__(self):
 
+        #--- Set up the data model.
+        self.defaultFileClass = TlvCsvFile
+        self.mdl = TlvDataModel(self.defaultFileClass)
+        self.filetypes = [
+            (self.defaultFileClass.DESCRIPTION, self.defaultFileClass.EXTENSION),
+            ('All files', '.*'),
+        ]
+        self.prjFilePath = None
+
+        #--- Set up the GUI.
         if prefs['localize_date']:
             locale.setlocale(locale.LC_TIME, "")
             # enabling localized time display
@@ -63,7 +74,6 @@ class TimelineViewer(TlviewerCommands):
         self._mainMenu = TlviewerMenu(self.root)
         self.root.config(menu=self._mainMenu)
 
-        self.mdl = TlvDataModel()
         mainWindow = ttk.Frame(self.root)
         mainWindow.pack(fill='both', expand=True)
         self._pathBar = TlviewerPathBar(mainWindow, self.mdl, text='', anchor='w', padx=5, pady=3)
@@ -72,6 +82,7 @@ class TimelineViewer(TlviewerCommands):
         self._toolbar = TlviewerToolbar(mainWindow)
         self._toolbar.pack(side='bottom', fill='x', padx=5, pady=2)
 
+        #--- Set up the timeline view widget.
         self.tlv = TlvController(
             self.mdl,
             mainWindow,
@@ -79,8 +90,9 @@ class TimelineViewer(TlviewerCommands):
             onDoubleClick=self.open_section,
             )
         self.mdl.add_observer(self.tlv)
+
+        #--- Connect the controls.
         self.bind_events()
-        self.prjFilePath = None
 
     def disable_menu(self):
         """Disable menu entries when no project is open.

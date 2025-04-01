@@ -14,7 +14,9 @@ from tlv_model.tlv_section import TlvSection
 
 class TlvCsvFile(TlvFile):
 
-    EXTENSION = 'csv'
+    DESCRIPTION = 'Comma-separated values'
+    EXTENSION = '.csv'
+
     COLUMNS = [
         'Title',
         'Desc',

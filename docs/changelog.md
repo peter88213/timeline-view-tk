@@ -12,6 +12,11 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.6.0
+
+- Refactored the code for better maintainability.
+
+
 ### Version 0.5.1
 
 - Prepared the help URL for translation.

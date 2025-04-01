@@ -108,11 +108,8 @@ class TlviewerCommands:
             initDir = './'
 
         filePath = filedialog.asksaveasfilename(
-            filetypes=[
-                ('Comma separated values', '.csv'),
-                ('All files', '.*'),
-            ],
-            defaultextension='.csv',
+            filetypes=self.filetypes,
+            defaultextension=self.defaultFileClass.EXTENSION,
             initialdir=initDir
             )
         if not filePath:
@@ -157,11 +154,8 @@ class TlviewerCommands:
             initDir = './'
 
         filePath = filedialog.askopenfilename(
-            filetypes=[
-                ('Comma separated values', '.csv'),
-                ('All files', '.*'),
-            ],
-            defaultextension='.csv',
+            filetypes=self.filetypes,
+            defaultextension=self.defaultFileClass.EXTENSION,
             initialdir=initDir
             )
         if filePath:
@@ -198,11 +192,8 @@ class TlviewerCommands:
             initDir = './'
 
         filePath = filedialog.asksaveasfilename(
-            filetypes=[
-                ('Comma separated values', '.csv'),
-                ('All files', '.*'),
-            ],
-            defaultextension='.csv',
+            filetypes=self.filetypes,
+            defaultextension=self.defaultFileClass.EXTENSION,
             initialdir=initDir
             )
         if filePath:

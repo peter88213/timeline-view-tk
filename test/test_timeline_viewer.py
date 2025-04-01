@@ -123,7 +123,7 @@ class TestNormalWrite(unittest.TestCase):
         delete_test_files()
 
     def test_csv_file_write(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
         model.sections = NORMAL_TEST_SECTIONS
         model.referenceDate = REFERENCE_DATE
         dataFile = TlvCsvFile(model, TEST_CSV_FILE)
@@ -131,7 +131,7 @@ class TestNormalWrite(unittest.TestCase):
         self.assertEqual(get_data_table(TEST_CSV_FILE), NORMAL_DATA_TABLE)
 
     def test_data_model_write_data(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
         model.sections = NORMAL_TEST_SECTIONS
         model.referenceDate = REFERENCE_DATE
         model.write_data(TEST_CSV_FILE)
@@ -147,7 +147,7 @@ class TestNormalRead(unittest.TestCase):
         delete_test_files()
 
     def test_csv_file_read(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
         dataFile = TlvCsvFile(model, TEST_CSV_FILE)
         dataFile.read()
         for scId in NORMAL_TEST_SECTIONS:
@@ -162,7 +162,7 @@ class TestNormalRead(unittest.TestCase):
         self.assertEqual(model.referenceDate, REFERENCE_DATE)
 
     def test_data_model_read_data(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
         model.read_data(TEST_CSV_FILE)
         for scId in NORMAL_TEST_SECTIONS:
             self.assertEqual(model.sections[scId].title, NORMAL_TEST_SECTIONS[scId].title)
@@ -185,7 +185,7 @@ class TestFaultyFile1(unittest.TestCase):
         delete_test_files()
 
     def test_data_model_read_data(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
 
         with self.assertRaises(ValueError) as exc:
             model.read_data(TEST_CSV_FILE)
@@ -201,7 +201,7 @@ class TestFaultyFile2(unittest.TestCase):
         delete_test_files()
 
     def test_data_model_read_data(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
 
         with self.assertRaises(ValueError) as exc:
             model.read_data(TEST_CSV_FILE)
@@ -211,7 +211,7 @@ class TestFaultyFile2(unittest.TestCase):
 class TestMissingFile(unittest.TestCase):
 
     def test_data_model_read_data(self):
-        model = TlvDataModel()
+        model = TlvDataModel(TlvCsvFile)
 
         assert not os.path.isfile(TEST_CSV_FILE)
         with self.assertRaises(FileNotFoundError) as exc:

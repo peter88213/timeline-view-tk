@@ -4,7 +4,7 @@
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/timeline-view-tk/help/)
 
 
-![](docs/img/tlv32.png) timeline-view-tk
+# ![](docs/img/tlv32.png) timeline-view-tk
 
 A timeline viewer programmed with Python, using tkinter.
 

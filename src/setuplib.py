@@ -147,8 +147,8 @@ def install(novxPath, zipped):
     copy_file(APP, installDir)
 
     # Install the localization files.
-    output('Copying locale ...')
-    copy_tree('locale', installDir)
+    # output('Copying locale ...')
+    # copy_tree('locale', installDir)
 
     # Install the icon files.
     output('Copying icons ...')

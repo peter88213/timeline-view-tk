@@ -1,4 +1,4 @@
-[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.4.4.pyzw)
+[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.5.0.pyzw)
 [![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
 [![Feedback](docs/img/feedback-button.png)](https://github.com/peter88213/timeline-view-tk/discussions)
 [![Online help](docs/img/help-button.png)](https://peter88213.github.io/timeline-view-tk/help/)
@@ -30,11 +30,17 @@ with a menu and a toolbar.
 - You can scroll forward and back in time.
 - You can move the events along the time scale using the mouse.
 - You can adjust the events' durations using the mouse.
-- The application is ready for internationalization with GNU gettext. German translations are provided. 
+- The application is ready for internationalization with GNU gettext. 
 
 The *nvtlview* class library is used for the 
 [novelibre timeline viewer plugin](https://github.com/peter88213/nv_tlview/),
 for example.
+
+
+## Translations
+
+There is a [German language pack](https://github.com/peter88213/tlviewer_de) to be installed separately. 
+
 
 ## Requirements
 
@@ -53,10 +59,10 @@ for example.
 
 ### Default: Executable Python zip archive
 
-Download the latest release [timeline_viewer_v0.4.4.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.4.4.pyzw)
+Download the latest release [timeline_viewer_v0.5.0.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.5.0.pyzw)
 
-- Launch *timeline_viewer_v0.4.4.pyzw* by double-clicking (Windows/Linux desktop),
-- or execute `python timeline_viewer_v0.4.4.pyzw` (Windows), resp. `python3 timeline_viewer_v0.4.4.pyzw` (Linux) on the command line.
+- Launch *timeline_viewer_v0.5.0.pyzw* by double-clicking (Windows/Linux desktop),
+- or execute `python timeline_viewer_v0.5.0.pyzw` (Windows), resp. `python3 timeline_viewer_v0.5.0.pyzw` (Linux) on the command line.
 
 #### Important
 
@@ -72,9 +78,9 @@ the zip file.
 
 ### Alternative: Zip file
 
-The package is also available in zip format: [timeline_viewer_v0.4.4.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.4.4.zip)
+The package is also available in zip format: [timeline_viewer_v0.5.0.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.5.0.zip)
 
-- Extract the *timeline_viewer_v0.4.4* folder from the downloaded zipfile "timeline_viewer_v0.4.4.zip".
+- Extract the *timeline_viewer_v0.5.0* folder from the downloaded zipfile "timeline_viewer_v0.5.0.zip".
 - Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
 - or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 

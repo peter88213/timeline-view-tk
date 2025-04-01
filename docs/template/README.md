@@ -30,11 +30,17 @@ with a menu and a toolbar.
 - You can scroll forward and back in time.
 - You can move the events along the time scale using the mouse.
 - You can adjust the events' durations using the mouse.
-- The application is ready for internationalization with GNU gettext. German translations are provided. 
+- The application is ready for internationalization with GNU gettext. 
 
 The *nvtlview* class library is used for the 
 [novelibre timeline viewer plugin](https://github.com/peter88213/nv_tlview/),
 for example.
+
+
+## Translations
+
+There is a [German language pack](https://github.com/peter88213/tlviewer_de) to be installed separately. 
+
 
 ## Requirements
 

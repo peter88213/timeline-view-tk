@@ -15,7 +15,6 @@ import zipapp
 
 import inliner
 import pgettext
-import translate_de
 
 
 class PackageBuilder(ABC):
@@ -90,29 +89,10 @@ setuplib.main(False)
         self.insert_version_number(self.testFile, version=self.version)
 
     def build_translation(self):
-        """Generate the German language file for the distribution."""
-        if not self.GERMAN_TRANSLATION:
-            return
-
+        """Generate the language file template."""
         print('\nCollecting the strings to translate ...')
         if not self.create_pot(self.testFile, app=self.PRJ_NAME, version=self.version):
             sys.exit(1)
-
-        print('Creating/updating the translations')
-        translation = translate_de.main(
-            self.moFile,
-            app=self.PRJ_NAME,
-            version=self.version,
-            languages='English-German',
-            translator='Peter Triesberger'
-            )
-        if translation is None:
-            sys.exit(1)
-
-        i18Dir, moDir = translation
-        self.distFiles.append(
-            (f'{i18Dir}/{moDir}/{self.moFile}', f'{self.buildDir}/{moDir}')
-            )
 
     def clean_up(self):
         """Remove the application/plugin script from the test directory."""

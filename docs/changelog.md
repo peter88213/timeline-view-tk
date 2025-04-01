@@ -11,6 +11,13 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+
+### Version 0.5.0
+
+- Moved the translation tools to the language pack template [tlviewer_de](https://github.com/peter88213/tlviewer_xx). Closes #9.
+- Moved the German translations to the separate language pack [tlviewer_de](https://github.com/peter88213/tlviewer_de). Closes #9
+
+
 ### Version 0.4.4
 
 - No longer creating a "temp" directory on startup.

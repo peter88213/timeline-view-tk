@@ -163,8 +163,6 @@ def main():
     os.makedirs(INSTALL_DIR, exist_ok=True)
     configDir = f'{INSTALL_DIR}/config'
     os.makedirs(configDir, exist_ok=True)
-    tempDir = f'{INSTALL_DIR}/temp'
-    os.makedirs(tempDir, exist_ok=True)
 
     #--- Load configuration.
     iniFile = f'{configDir}/tlviewer.ini'

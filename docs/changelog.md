@@ -11,6 +11,11 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+### Version 0.4.4
+
+- No longer creating a "temp" directory on startup.
+
+
 ### Version 0.4.3
 
 Added a window icon.

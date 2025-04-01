@@ -12,6 +12,12 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.5.1
+
+- Prepared the help URL for translation.
+- Updated the help page.
+
+
 ### Version 0.5.0
 
 - Moved the translation tools to the language pack template [tlviewer_de](https://github.com/peter88213/tlviewer_xx). Closes #9.

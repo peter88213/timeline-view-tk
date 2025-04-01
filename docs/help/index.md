@@ -58,9 +58,6 @@ Last event
 :   Shift the timeline so that the latest event is positioned near the
     right edge of the window.
 
-Selected section
-
-:   Shift the timeline so that the section selected in the *novelibre*
     project tree is positioned in the center of the window.
 
 ### \"Scale\" menu
@@ -81,16 +78,6 @@ Fit to window
 
 :   This sets the scale and moves the timeline, so that all sections
     with valid or substituted date/time information fit into the window.
-
-### \"Substitutions\" menu
-
-Use 00:00 for missing times
-
-:   -   If ticked, \"00:00\" is used as display time for sections
-        without time information. This does not affect the section
-        properties.
-    -   If unticked, sections without time information are not
-        displayed.
 
 ### \"Cascading\" menu
 
@@ -119,6 +106,16 @@ Standard
 - You can fine-tune the stacking limits with `Shift`-`Ctrl`-`Mousewheel`.
 
 ---
+
+### \"Options\" menu
+
+Use 00:00 for missing times
+
+:   -   If ticked, \"00:00\" is used as display time for sections
+        without time information. This does not affect the section
+        properties.
+    -   If unticked, sections without time information are not
+        displayed.
 
 ### \"Help\" menu
 

@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.5.0\n"
-"POT-Creation-Date: 2025-04-01 17:56:54\n"
+"Project-Id-Version: 0.5.1\n"
+"POT-Creation-Date: 2025-04-01 18:30:26\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: LANGUAGE\n"
@@ -174,6 +174,9 @@ msgid "d"
 msgstr ""
 
 msgid "h"
+msgstr ""
+
+msgid "https://peter88213.github.io/timeline-view-tk/help/"
 msgstr ""
 
 msgid "m"

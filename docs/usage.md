@@ -1,8 +1,8 @@
-[Project homepage](https://github.com/peter88213/timeline-viewer-tk) > Instructions for use
+[Project homepage](https://github.com/peter88213/timeline-view-tk) > Instructions for use
 
 --- 
 
-*timeline_viewer* is a timeline viewer application programmed with Python, using tkinter.
+*timeline-view-tk* is a timeline viewer application programmed with Python, using tkinter.
  
 ---
 
@@ -22,6 +22,6 @@ See the [online help](https://peter88213.github.io/timeline-view-tk/help/).
 
 # License
 
-This is Open Source software, and the *nv_tlview* plugin is licensed under GPLv3. See the
+This is Open Source software, and timeline-view-tk is licensed under GPLv3. See the
 [GNU General Public License website](https://www.gnu.org/licenses/gpl-3.0.en.html) for more
 details, or consult the [LICENSE](https://github.com/peter88213/nv_tlview/blob/main/LICENSE) file.

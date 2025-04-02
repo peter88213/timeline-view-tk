@@ -6,12 +6,12 @@
 
 ## First event
 
-Shift the timeline so that the earliest event is positioned near the
-left edge of the window.
+With **Go to > First event**, you can shift the timeline so that the earliest event 
+is positioned near the left edge of the window.
 
 ## Last event
 
-Shift the timeline so that the latest event is positioned near the
-right edge of the window.
+With **Go to > Last event**, you can shift the timeline so that the latest event 
+is positioned near the right edge of the window.
 
 

@@ -1,4 +1,4 @@
-[Timeline viewer help](index.md) > "Go to" menu
+[Home](..) > [Timeline viewer help](index.md) > "Go to" menu
 
 ---
 

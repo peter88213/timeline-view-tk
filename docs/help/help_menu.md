@@ -1,4 +1,4 @@
-[Timeline viewer help](index.md) > "Help" menu
+[Home](..) > [Timeline viewer help](index.md) > "Help" menu
 
 ---
 

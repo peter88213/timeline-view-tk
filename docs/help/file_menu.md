@@ -1,4 +1,4 @@
-[Timeline viewer help](index.md) > "File" menu
+[Home](..) > [Timeline viewer help](index.md) > "File" menu
 
 ---
 
@@ -27,7 +27,6 @@ you can open an existing project file.
 - A file select dialog asks for the new project’s file name.
   If you cancel the dialog the action is aborted.
 
----
 
 ## Reload
 
@@ -78,3 +77,10 @@ you can close the project without exiting the program.
 - You will be asked for saving changes. 
   At this point, you also can abort the action.
 
+
+## Quit/Exit
+
+-  Under Windows you can exit with **File > Exit** or ``Alt``-``F4``.
+-  Otherwise you can exit with **File > Quit** or ``Ctrl``-``Q``.
+-  When exiting the program, you will be asked for saving changes.
+   At this point, you also can abort the action.

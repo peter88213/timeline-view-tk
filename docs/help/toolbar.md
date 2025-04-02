@@ -1,4 +1,4 @@
-[Timeline viewer help](index.md) > The footer toolbar
+[Home](..) > [Timeline viewer help](index.md) > The footer toolbar
 
 ---
 

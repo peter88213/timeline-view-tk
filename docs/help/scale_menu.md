@@ -1,4 +1,4 @@
-[Timeline viewer help](index.md) > "Scale" menu
+[Home](..) > [Timeline viewer help](index.md) > "Scale" menu
 
 ---
 

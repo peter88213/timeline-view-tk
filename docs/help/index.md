@@ -1,7 +1,8 @@
+[Home](..)
 
-# Timeline viewer
+---
 
-**User guide**
+# Timeline viewer User guide
 
 This page refers to the latest
 [timeline-view-tk](https://github.com/peter88213/timeline-view-tk/) release. You can

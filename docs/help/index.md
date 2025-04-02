@@ -5,7 +5,7 @@
 
 This page refers to the latest
 [timeline-view-tk](https://github.com/peter88213/timeline-view-tk/) release. You can
-open it with **Help \> Online help**.
+open it with **Help > Online help**.
 
 
 ## Operation
@@ -32,7 +32,7 @@ open it with **Help \> Online help**.
 
 -   Hold down the `Ctrl` and `Shift` buttons and click on the timeline
     marker, then drag it with the mouse. This will increase or decrease
-    the section\'s duration while keeping the start date/time.
+    the section's duration while keeping the start date/time.
 
 ---
 
@@ -46,21 +46,10 @@ before releasing the mouse button.
 
 ## Command reference
 
-### \"Go to\" menu
+["Go to" menu](go_to_menu.md)
 
-First event
 
-:   Shift the timeline so that the earliest event is positioned near the
-    left edge of the window.
-
-Last event
-
-:   Shift the timeline so that the latest event is positioned near the
-    right edge of the window.
-
-    project tree is positioned in the center of the window.
-
-### \"Scale\" menu
+### "Scale" menu
 
 Hours
 
@@ -79,7 +68,7 @@ Fit to window
 :   This sets the scale and moves the timeline, so that all sections
     with valid or substituted date/time information fit into the window.
 
-### \"Cascading\" menu
+### "Cascading" menu
 
 The section marks are stacked on the timeline canvas, so that they would
 not overlap or cover the title of previous sections. If the stacking
@@ -107,17 +96,17 @@ Standard
 
 ---
 
-### \"Options\" menu
+### "Options" menu
 
 Use 00:00 for missing times
 
-:   -   If ticked, \"00:00\" is used as display time for sections
+:   -   If ticked, "00:00" is used as display time for sections
         without time information. This does not affect the section
         properties.
     -   If unticked, sections without time information are not
         displayed.
 
-### \"Help\" menu
+### "Help" menu
 
 Online help
 
@@ -128,7 +117,7 @@ Online help
 ![rewindLeft](images/rewindLeft.png) Go one page back
 
 :   Shift the timeline to go about one screen width back in time. Same
-    as the \"back\" mouse button (Windows).
+    as the "back" mouse button (Windows).
 
 ![arrowLeft](images/arrowLeft.png) Scroll back
 
@@ -153,7 +142,7 @@ Online help
 ![rewindRight](images/rewindRight.png) Go one page forward
 
 :   Shift the timeline to go about one screen width forward in time.
-    Same as the \"forward\" mouse button (Windows).
+    Same as the "forward" mouse button (Windows).
 
 ![arrowDown](images/arrowDown.png) Reduce the time scale
 

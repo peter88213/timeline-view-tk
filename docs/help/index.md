@@ -9,7 +9,28 @@ This page refers to the latest
 open it with **Help > Online help**.
 
 
+## Setting up the program 
+
+After downloading and installing the program as described on the download page, 
+you might want to make some [preparations](preparations.md) in order to make
+it accessible on your desktop. 
+ 
+
 ## Operation
+
+### Launching the application
+
+- You can start the timeline viewer by dragging a *.csv *file onto the desktop shortcut, 
+  then this project will be opened. 
+- If you start the timeline viewer via clicking or double-clicking on the
+  program icon, the project from the last session will be automatically reopened, 
+  if there is one.
+- Otherwise a blank timeline view appears, and you can click on the 
+  **File > Open** menu item to load an existing project file. 
+- In case there isn't one, you may want to click on **File > New** to create
+  a csv file. 
+  Then you can edit this file with your standard application for csv files, 
+  which may be a spreadsheet application, and enter your events.  
 
 
 ### Mouse scrolling

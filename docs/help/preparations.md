@@ -32,10 +32,16 @@ e.g. `C:\Users\username\.tlviewer`.
 
 - Under Windows, you can drag and drop the **run.pyw** icon onto the Windows 
   desktop while holding down the `Alt` key.
+  
+  ![Windows screenshot](images/shortcut01.png)
 - Optionally, you can open the shortcut's properties via right-click, 
   and change the icon. 
   For this you can select the **tlv64.ico** file in the **icons**
   folder in the installation directory. 
+- Then you can rename the shortcut.
+
+  ![Windows screenshot](images/shortcut02.png)
+
 - Under Linux, you might want to create a program launcher. 
   Please refer to the documentation of your desktop.   
     

@@ -43,7 +43,7 @@ On Windows, open the installation folder, hold down the Alt key on your keyboard
 and then drag and drop "run.pyw" to your desktop.
 
 On Linux, create a launcher on your desktop. With xfce for instance, the launcher's command may look like this:
-python3 /home/peter/.tlviewer %F
+python3 /home/peter/.tlviewer/run.pyw %F
 '''
 
 START_UP_CODE = f'''import logging

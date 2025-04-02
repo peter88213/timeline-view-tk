@@ -20,8 +20,8 @@ it accessible on your desktop.
 
 ### Launching the application
 
-- You can start the timeline viewer by dragging a *.csv *file onto the desktop shortcut, 
-  then this project will be opened. 
+- You can start the timeline viewer by dragging and dropping a *.csv *file 
+  onto the desktop shortcut, then this project will be opened. 
 - If you start the timeline viewer via clicking or double-clicking on the
   program icon, the project from the last session will be automatically reopened, 
   if there is one.

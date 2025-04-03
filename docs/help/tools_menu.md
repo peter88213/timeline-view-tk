@@ -15,7 +15,7 @@ With **Tools > Options > Use 00:00 for missing times**, you get a checkbox.
  -   If unchecked, sections without time information are not
      displayed.
      
-## Large toolbar icons
+### Large toolbar icons
 
 With **Tools > Options > Large toolbar icons**, you get a checkbox.
 

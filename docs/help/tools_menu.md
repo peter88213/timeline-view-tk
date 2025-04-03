@@ -4,9 +4,9 @@
 
 # "Tools" menu
 
-# "Options" submenu
+## "Options" submenu
 
-## Use 00:00 for missing times
+### Use 00:00 for missing times
 
 With **Tools > Options > Use 00:00 for missing times**, you get a checkbox.
 

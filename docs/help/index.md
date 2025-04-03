@@ -72,7 +72,7 @@ before releasing the mouse button.
 - ["Go to" menu](go_to_menu.md)
 - ["Scale" menu](scale_menu.md)
 - ["Cascading" menu](cascading_menu.md)
-- ["Options" menu](options_menu.md)
+- ["Tools" menu](tools_menu.md)
 - ["Help" menu](help_menu.md)
 - [The footer toolbar](toolbar.md)
 

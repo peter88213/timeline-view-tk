@@ -12,6 +12,11 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.6.1
+
+- Fixed a bug where the path of an unreadable file may be stored as "last_open". 
+
+
 ### Version 0.6.0
 
 - Refactored the code for better maintainability.

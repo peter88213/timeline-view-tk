@@ -95,18 +95,12 @@ class TimelineViewer(TlviewerCommands):
         self.bind_events()
 
     def disable_menu(self):
-        """Disable menu entries when no project is open.
-        
-        To be extended by subclasses.
-        """
+        """Disable menu entries when no project is open."""
         self._mainMenu.disable_menu()
         self._toolbar.disable_menu()
 
     def enable_menu(self):
-        """Enable menu entries when a project is open.
-        
-        To be extended by subclasses.
-        """
+        """Enable menu entries when a project is open."""
         self._mainMenu.enable_menu()
         self._toolbar.enable_menu()
 
@@ -148,9 +142,9 @@ class TimelineViewer(TlviewerCommands):
                 )
         else:
             self.prjFilePath = filePath
+            prefs['last_open'] = filePath
         finally:
             self.refresh()
-        prefs['last_open'] = filePath
 
     def refresh(self, event=None):
         self.tlv.refresh()

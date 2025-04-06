@@ -12,6 +12,13 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.7.0
+
+Refactored the code for better maintainability.
+- Renamed the nvtlv package to tlv according to nv_tlv 5.4.0
+- Separated the application-specific key definitions.
+
+
 ### Version 0.6.1
 
 - Fixed a bug where the path of an unreadable file may be stored as "last_open". 

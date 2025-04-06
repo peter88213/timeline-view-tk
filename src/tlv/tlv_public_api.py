@@ -1,7 +1,7 @@
 """Provide a mixin class for the timeline viewer public API.
 
 Copyright (c) 2025 Peter Triesberger
-For further information see https://github.com/peter88213/nv_tlself.view
+For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
 
@@ -116,7 +116,7 @@ class TlvPublicApi:
 
     def undo(self, event=None):
         """Undo the most recent operation."""
-        self.pop_event()
+        self.pop_section()
 
     def unlock(self, event=None):
         """Allow changes to the data model."""

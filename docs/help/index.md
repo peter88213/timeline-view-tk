@@ -44,17 +44,17 @@ it accessible on your desktop.
     `Shift`-`Ctrl`-`Mousewheel`.
 
 
-### Shifting a section in time
+### Shifting an event in time
 
--   Hold down the `Shift` button and click on the timeline marker, then
-    drag it with the mouse. This will move the section forward or
+-   Hold down the `Shift` button and click on the event marker, then
+    drag it with the mouse. This will move the event forward or
     backward in time while keeping the duration.
 
-### Shifting the section end
+### Shifting the event end
 
--   Hold down the `Ctrl` and `Shift` buttons and click on the timeline
+-   Hold down the `Ctrl` and `Shift` buttons and click on the event
     marker, then drag it with the mouse. This will increase or decrease
-    the section's duration while keeping the start date/time.
+    the event's duration while keeping the start date/time.
 
 ---
 

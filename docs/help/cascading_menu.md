@@ -4,8 +4,8 @@
 
 # "Cascading" menu
 
-The section marks are stacked on the timeline canvas, so that they would
-not overlap or cover the title of previous sections. If the stacking
+The event marks are stacked on the timeline canvas, so that they would
+not overlap or cover the title of previous events. If the stacking
 algorithm does not seem good enough to you, you can adjust its limits.
 
 ## Tight

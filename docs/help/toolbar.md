@@ -41,7 +41,7 @@
 
 ![fitToWindow](images/fitToWindow.png) Fit to window
 
-:   This sets the scale and moves the timeline, so that all sections
+:   This sets the scale and moves the timeline, so that all events
     with valid or substituted date/time information fit into the window.
 
 ![arrowUp](images/arrowUp.png) Increase the time scale

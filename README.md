@@ -53,9 +53,10 @@ There is a [German language pack](https://github.com/peter88213/tlviewer_de) to 
 
 ---
 
-[Changelog](docs/changelog.md)
-
-[Feedback](https://github.com/peter88213/timeline-view-tk/discussions)
+- [Changelog](docs/changelog.md)
+- [User guide (English)](https://peter88213.github.io/timeline-view-tk/help/)
+- [User guide (German)](https://peter88213.github.io/tlviewer_de/help/)
+- [Feedback](https://github.com/peter88213/timeline-view-tk/discussions)
 
 ---
 

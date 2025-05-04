@@ -12,6 +12,13 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.7.1
+
+- Fixed a bug where the "shift" indicator line stays visible when releasing
+  the mouse button without having changed the position or duration.
+- Refactored the code for better performance.
+
+
 ### Version 0.7.0
 
 Refactored the code for better maintainability.

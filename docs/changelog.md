@@ -11,6 +11,10 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+### Version 0.8.0
+
+- Providing a small-scale overview at the bottom.
+
 
 ### Version 0.7.1
 

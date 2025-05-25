@@ -20,7 +20,7 @@ from tlv.tlv_scale_canvas import TlvScaleCanvas
 
 class TlvOverviewCanvas(TlvScaleCanvas):
 
-    SPACING_RATIO = 3
+    SPACING_RATIO = 2
     SCALE_RATIO = 9
     # for symmetry, this should be an odd number
     SC_X_MIN = 2

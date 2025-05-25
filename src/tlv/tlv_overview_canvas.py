@@ -24,6 +24,7 @@ class TlvOverviewCanvas(TlvScaleCanvas):
     SCALE_RATIO = 9
     # for symmetry, this should be an odd number
     SC_X_MIN = 2
+    # minimum width limit of a section marker to be visible
     SC_THICKNESS = 4
 
     def __init__(self, tlvController, master=None, **kw):
@@ -31,7 +32,6 @@ class TlvOverviewCanvas(TlvScaleCanvas):
         self.sectionMarkColor = 'red'
         self.scaleHeight = MAJOR_HEIGHT + MINOR_HEIGHT
         self.scYPos = MAJOR_HEIGHT / 2
-        MAJOR_HEIGHT / 3
 
     def draw(self, startTimestamp, scale, specificDate, refIso, srtSections):
         self.delete("all")

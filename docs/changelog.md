@@ -11,6 +11,16 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+### Version 0.8.2
+
+- Updated the tlv library to nv_tlview 5.5.1, preventing the small-size overview from shrinking. 
+
+
+### Version 0.8.1
+
+- Adjusted the overview spacing ratio.
+
+
 ### Version 0.8.0
 
 - Providing a small-scale overview at the bottom.

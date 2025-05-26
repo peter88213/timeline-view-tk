@@ -11,6 +11,12 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 
 ---
 
+
+### Version 0.9.0
+
+- Updated the tlv library to nv_tlview 5.6.0, fixing a regression and refactoring the code. 
+
+
 ### Version 0.8.2
 
 - Updated the tlv library to nv_tlview 5.5.1, preventing the small-size overview from shrinking. 

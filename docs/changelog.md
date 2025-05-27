@@ -12,6 +12,11 @@ See the [GitHub "Features" project](https://github.com/users/peter88213/projects
 ---
 
 
+### Version 0.9.1
+
+- Updated the tlv library to nv_tlview 5.6.1, fixing a bug. 
+
+
 ### Version 0.9.0
 
 - Updated the tlv library to nv_tlview 5.6.0, fixing a regression and refactoring the code. 

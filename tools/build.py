@@ -12,7 +12,7 @@ sys.path.insert(0, f'{os.getcwd()}/../../timeline-view-tk/tools')
 from package_builder import PackageBuilder
 import inliner
 
-VERSION = '0.9.0'
+VERSION = '0.9.1'
 
 TEMP_FILE = '../test/temp.py'
 

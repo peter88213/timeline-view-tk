@@ -49,7 +49,7 @@ There is a [German language pack](https://github.com/peter88213/tlviewer_de) to 
 ## Requirements
 
 - Windows or Linux. Mac OS support is experimental.
-- [Python](https://www.python.org/) version 3.6+. 
+- [Python](https://www.python.org/) version 3.7+. 
 
 ---
 

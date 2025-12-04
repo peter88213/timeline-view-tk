@@ -39,9 +39,9 @@ it accessible on your desktop.
 -   Scroll the timeline vertically with the mousewheel.
 -   Scroll the timeline in any direction by right-clicking on the canvas
     and dragging the mouse.
--   Increase or reduce the time scale with `${Ctrl}`-`Mousewheel`.
+-   Increase or reduce the time scale with `Ctrl`-`Mousewheel`.
 -   Change the distance limits for stacking with
-    `Shift`-`${Ctrl}`-`Mousewheel`.
+    `Shift`-`Ctrl`-`Mousewheel`.
 
 
 ### Shifting an event in time
@@ -52,7 +52,7 @@ it accessible on your desktop.
 
 ### Shifting the event end
 
--   Hold down the `${Ctrl}` and `Shift` buttons and click on the event
+-   Hold down the `Ctrl` and `Shift` buttons and click on the event
     marker, then drag it with the mouse. This will increase or decrease
     the event's duration while keeping the start date/time.
 

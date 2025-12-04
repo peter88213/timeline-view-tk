@@ -49,6 +49,6 @@ e.g. `C:\Users\username\.tlviewer`.
     
   With the XFCE desktop, for example, my launcher command is:
  
-  ``python3 /home/peter/.tlviewer/run.pyw %F``
+  `python3 /home/peter/.tlviewer/run.pyw %F`
 
 

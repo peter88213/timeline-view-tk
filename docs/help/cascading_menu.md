@@ -26,6 +26,6 @@ With **Cascading > Standard**, you can reset the cascading to default.
 
 **Hint** 
 
-- You can fine-tune the stacking limits with `Shift`-`Ctrl`-`Mousewheel`.
+- You can fine-tune the stacking limits with `Shift`-`${Ctrl}`-`Mousewheel`.
 
 ---

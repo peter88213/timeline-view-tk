@@ -18,7 +18,7 @@ With **File > New**, you can create a new project.
 
 ## Open...
 
-With **File > Open** or ``Ctrl``-``O``,
+With **File > Open** or `${Ctrl}`-`O`,
 you can open an existing project file.
 
 - This will close the current project. 
@@ -30,7 +30,7 @@ you can open an existing project file.
 
 ## Reload
 
-With **File > Reload** or ``Ctrl``-``R``,
+With **File > Reload** or `${Ctrl}`-`R`,
 you can overwrite the project in the memory
 with the last saved version.
 
@@ -55,13 +55,13 @@ with your standard application for *.csv* files.
 
 ## Save
 
-With **File > Save** or ``Ctrl``-``S``,
+With **File > Save** or `${Ctrl}`-`S`,
 you can save the project.
 
 
 ## Save as...
 
-With **File > Save as...** or ``Ctrl``-``Shift``-``S``,
+With **File > Save as...** or `${Ctrl}`-`Shift`-`S`,
 you can save the project with another file name/at another place.
 
 - A file select dialog opens to specify the new path and file name.
@@ -80,7 +80,7 @@ you can close the project without exiting the program.
 
 ## Quit/Exit
 
--  Under Windows you can exit with **File > Exit** or ``Alt``-``F4``.
--  Otherwise you can exit with **File > Quit** or ``Ctrl``-``Q``.
+-  Under Windows you can exit with **File > Exit** or `Alt`-`F4`.
+-  Otherwise you can exit with **File > Quit** or `${Ctrl}`-`Q`.
 -  When exiting the program, you will be asked for saving changes.
    At this point, you also can abort the action.

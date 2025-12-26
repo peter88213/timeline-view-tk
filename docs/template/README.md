@@ -14,9 +14,7 @@ The data is read from a csv file:
 
 ![Screenshot](docs/Screenshots/screen02.png)
 
-The *nvtlview* class library provides the *tlv* widget that is addressed via its controller.
-
-*Timeline_viewer* is a simple standalone application using *nvtlview* 
+*Timeline_viewer* is a simple standalone application using the *tlv* class library 
 with a menu and a toolbar. 
 
 ## Features
@@ -34,7 +32,7 @@ with a menu and a toolbar.
 - You can adjust the events' durations using the mouse.
 - The application is ready for internationalization with GNU gettext. 
 
-The *nvtlview* class library is also used for the 
+The *tlv* class library is also used for the 
 [novelibre timeline viewer plugin](https://github.com/peter88213/nv_tlview/),
 and for the 
 [yWriter Timeline viewer](https://github.com/peter88213/yw_tlview)

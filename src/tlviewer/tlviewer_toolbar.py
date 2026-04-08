@@ -7,9 +7,9 @@ License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 from tkinter import ttk
 
 import tkinter as tk
+from tlv.tlv_globals import prefs
 from tlv.tlv_locale import _
 from tlviewer.tlviewer_globals import INSTALL_DIR
-from tlviewer.tlviewer_globals import settings
 from tlviewer.tooltip import Hovertip
 
 
@@ -19,7 +19,7 @@ class TlviewerToolbar(ttk.Frame):
         ttk.Frame.__init__(self, master)
 
         # Prepare the toolbar icons.
-        if settings['large_icons']:
+        if prefs['large_icons']:
             size = 24
         else:
             size = 16
@@ -154,7 +154,7 @@ class TlviewerToolbar(ttk.Frame):
         self.undoButton.image = self._toolbarIcons['undo']
 
         # Initialize tooltips.
-        if not settings['enable_hovertips']:
+        if not prefs['enable_hovertips']:
             return
 
         Hovertip(rewindLeftButton, rewindLeftButton['text'])

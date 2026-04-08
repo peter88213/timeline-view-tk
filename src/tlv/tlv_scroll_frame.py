@@ -1,6 +1,6 @@
 """Provide a tkinter frame for a scrollable timeline.
 
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
@@ -8,6 +8,7 @@ from tkinter import ttk
 
 from tlv.platform.platform_settings import MOUSE
 from tlv.platform.platform_settings import PLATFORM
+from tlv.tlv_globals import prefs
 from tlv.tlv_overview_canvas import TlvOverviewCanvas
 from tlv.tlv_scale_canvas import TlvScaleCanvas
 from tlv.tlv_section_canvas import TlvSectionCanvas
@@ -116,20 +117,23 @@ class TlvScrollFrame(ttk.Frame):
             scale,
             specificDate,
             referenceDate,
-            )
+            prefs['color_scale_background'],
+        )
         self._sectionCanvas.draw(
             startTimestamp,
             scale,
             srtSections,
             minDist,
-            )
+            prefs['color_section_background'],
+        )
         self._ovCanvas.draw(
             startTimestamp,
             scale,
             specificDate,
             referenceDate,
             srtSections,
-            )
+            prefs['color_scale_background'],
+        )
 
     def get_canvas(self):
         return self._sectionCanvas

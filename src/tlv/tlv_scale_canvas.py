@@ -1,6 +1,6 @@
 """Provide a tk canvas for scale display.
 
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
@@ -31,11 +31,18 @@ class TlvScaleCanvas(tk.Canvas):
     def __init__(self, tlvController, master=None, **kw):
         super().__init__(master, cnf={}, **kw)
         self._tlvCtrl = tlvController
-        self['background'] = prefs['color_scale_background']
         self.majorSpacing = None
         self.minorSpacing = None
 
-    def draw(self, startTimestamp, scale, specificDate, refIso):
+    def draw(
+        self,
+        startTimestamp,
+        scale,
+        specificDate,
+        refIso,
+        background,
+    ):
+        self['background'] = background
         self.delete("all")
         if not specificDate:
             if refIso is None:

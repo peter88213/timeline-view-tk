@@ -25,7 +25,8 @@ class TlvCsvFile(TlvFile):
         'Day',
         'LastsDays',
         'LastsHours',
-        'LastsMinutes'
+        'LastsMinutes',
+        'Color',
     ]
 
     def read(self):
@@ -61,33 +62,40 @@ class TlvCsvFile(TlvFile):
                 self._mdl.sections[scId].lastsDays,
                 self._mdl.sections[scId].lastsHours,
                 self._mdl.sections[scId].lastsMinutes,
+                self._mdl.sections[scId].color,
             ) = cells
             self._mdl.sections[scId].on_element_change = self._mdl.on_element_change
 
     def write(self):
         dataTable = [self.COLUMNS]
         for scId in self._mdl.sections:
-            dataTable.append([
-                self._mdl.sections[scId].title,
-                self._mdl.sections[scId].desc,
-                self._mdl.sections[scId].date,
-                self._mdl.sections[scId].time,
-                self._mdl.sections[scId].day,
-                self._mdl.sections[scId].lastsDays,
-                self._mdl.sections[scId].lastsHours,
-                self._mdl.sections[scId].lastsMinutes,
-                ])
+            dataTable.append(
+                [
+                    self._mdl.sections[scId].title,
+                    self._mdl.sections[scId].desc,
+                    self._mdl.sections[scId].date,
+                    self._mdl.sections[scId].time,
+                    self._mdl.sections[scId].day,
+                    self._mdl.sections[scId].lastsDays,
+                    self._mdl.sections[scId].lastsHours,
+                    self._mdl.sections[scId].lastsMinutes,
+                    self._mdl.sections[scId].color,
+                ]
+            )
         if self._mdl.referenceDate:
-            dataTable.append([
-                '',
-                '',
-                self._mdl.referenceDate,
-                '',
-                '0',
-                '',
-                '',
-                '',
-                ])
+            dataTable.append(
+                [
+                    '',
+                    '',
+                    self._mdl.referenceDate,
+                    '',
+                    '0',
+                    '',
+                    '',
+                    '',
+                    '',
+                ]
+            )
 
         with open(self.filePath, 'w', encoding='utf-8', newline='') as f:
             dataWriter = csv.writer(f, dialect='excel')

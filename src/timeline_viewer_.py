@@ -24,6 +24,7 @@ from tkinter import ttk
 
 import tkinter as tk
 from tlv.tlv_controller import TlvController
+from tlv.tlv_globals import prefs
 from tlv.tlv_locale import _
 from tlv_model.tlv_csv_file import TlvCsvFile
 from tlv_model.tlv_data_model import TlvDataModel
@@ -31,7 +32,6 @@ from tlviewer.configuration import Configuration
 from tlviewer.set_icon_tk import set_icon
 from tlviewer.tlviewer_commands import TlviewerCommands
 from tlviewer.tlviewer_globals import INSTALL_DIR
-from tlviewer.tlviewer_globals import settings
 from tlviewer.tlviewer_menu import TlviewerMenu
 from tlviewer.tlviewer_path_bar import TlviewerPathBar
 from tlviewer.tlviewer_toolbar import TlviewerToolbar
@@ -39,13 +39,23 @@ from tlviewer.tlviewer_toolbar import TlviewerToolbar
 SETTINGS = dict(
     last_open='',
     window_geometry='1200x800',
+    color_scale_background='gray25',
+    color_major_scale='white',
+    color_minor_scale='gray60',
+    color_section_background='black',
+    color_section_mark='white',
+    color_section_title='white',
+    color_section_date='gray60',
+    color_indicator='lightblue',
+    color_window_mark='gray40',
 )
 OPTIONS = dict(
     enable_hovertips=True,
     substitute_missing_time=False,
     large_icons=False,
     localize_date=True,
-    )
+    dark_mode=True,
+)
 
 
 class TimelineViewer(TlviewerCommands):
@@ -62,13 +72,13 @@ class TimelineViewer(TlviewerCommands):
         self.prjFilePath = None
 
         #--- Set up the GUI.
-        if settings['localize_date']:
+        if prefs['localize_date']:
             locale.setlocale(locale.LC_TIME, "")
             # enabling localized time display
 
         self.root = tk.Tk()
         self.root.title('Timeline viewer')
-        self.root.geometry(settings['window_geometry'])
+        self.root.geometry(prefs['window_geometry'])
         set_icon(self.root, icon='tlv')
 
         self._mainMenu = TlviewerMenu(self.root)
@@ -86,9 +96,8 @@ class TimelineViewer(TlviewerCommands):
         self.tlv = TlvController(
             self.mdl,
             mainWindow,
-            settings,
             onDoubleClick=self.open_section,
-            )
+        )
         self.mdl.add_observer(self.tlv)
 
         #--- Connect the controls.
@@ -116,7 +125,7 @@ class TimelineViewer(TlviewerCommands):
 
                 elif answer:
                     self.save_project_file(self.prjFilePath)
-            settings['window_geometry'] = self.root.winfo_geometry()
+            prefs['window_geometry'] = self.root.winfo_geometry()
             self.tlv.on_quit()
         except Exception as ex:
             messagebox.showerror(
@@ -131,7 +140,7 @@ class TimelineViewer(TlviewerCommands):
         self.mdl.clear()
         try:
             self.mdl.read_data(filePath)
-        except Exception as ex:
+        except NotImplementedError as ex:
             self.mdl.clear()
             self.prjFilePath = None
             self.disable_menu()
@@ -139,10 +148,10 @@ class TimelineViewer(TlviewerCommands):
                 self.root.title(),
                 message=_('Cannot read file'),
                 detail=str(ex),
-                )
+            )
         else:
             self.prjFilePath = filePath
-            settings['last_open'] = filePath
+            prefs['last_open'] = filePath
         finally:
             self.refresh()
 
@@ -178,8 +187,8 @@ def main():
     except:
         pass
         # skipping the configuraton if faulty
-    settings.update(configuration.settings)
-    settings.update(configuration.options)
+    prefs.update(configuration.settings)
+    prefs.update(configuration.options)
 
     #--- Instantiate the app object.
     app = TimelineViewer()
@@ -190,7 +199,7 @@ def main():
     except IndexError:
         filePath = ''
     if not filePath or not os.path.isfile(filePath):
-        filePath = settings['last_open']
+        filePath = prefs['last_open']
     if filePath and os.path.isfile(filePath):
         app.read_data(filePath)
 
@@ -199,11 +208,11 @@ def main():
     app.start()
 
     #--- Save project specific configuration
-    for keyword in settings:
+    for keyword in prefs:
         if keyword in configuration.options:
-            configuration.options[keyword] = settings[keyword]
+            configuration.options[keyword] = prefs[keyword]
         elif keyword in configuration.settings:
-            configuration.settings[keyword] = settings[keyword]
+            configuration.settings[keyword] = prefs[keyword]
     configuration.write(iniFile)
 
 

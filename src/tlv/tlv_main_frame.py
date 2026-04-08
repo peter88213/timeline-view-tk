@@ -1,6 +1,6 @@
 """Provide a tkinter widget for a TlvMainFrame view.
 
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
@@ -15,6 +15,7 @@ from tlv.platform.platform_settings import PLATFORM
 from tlv.tlv_globals import DAY
 from tlv.tlv_globals import HOUR
 from tlv.tlv_globals import YEAR
+from tlv.tlv_globals import prefs
 from tlv.tlv_helper import get_duration_str
 from tlv.tlv_helper import get_seconds
 from tlv.tlv_helper import get_specific_date
@@ -43,7 +44,7 @@ class TlvMainFrame(ttk.Frame):
     SCALE_MIN = 10
     SCALE_MAX = YEAR * 5
 
-    def __init__(self, model, master, tlvController, settings):
+    def __init__(self, model, master, tlvController):
         ttk.Frame.__init__(self, master)
 
         self._dataModel = model
@@ -73,8 +74,6 @@ class TlvMainFrame(ttk.Frame):
         self.tlFrame.pack(side='top', fill='both', expand=True)
 
         #--- Settings and options.
-        self.settings = settings
-
         self._bind_events()
         self.sort_sections()
 
@@ -274,7 +273,7 @@ class TlvMainFrame(ttk.Frame):
                 )
                 refIso = self._dataModel.referenceDate
                 if section.time is None:
-                    if not self.settings.get(
+                    if not prefs.get(
                         'substitute_missing_time',
                         False
                     ):
@@ -312,6 +311,7 @@ class TlvMainFrame(ttk.Frame):
                 else:
                     continue
 
+                sectionColor = section.color or prefs['color_section_mark']
                 srtSections.append(
                     (
                         get_timestamp(dt),
@@ -323,6 +323,7 @@ class TlvMainFrame(ttk.Frame):
                         section.title,
                         timeStr,
                         scId,
+                        sectionColor,
                     )
                 )
             except:

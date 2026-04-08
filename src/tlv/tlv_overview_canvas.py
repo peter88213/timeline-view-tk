@@ -1,6 +1,6 @@
 """Provide a tk canvas for a large-scale timeline overview.
 
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
@@ -35,7 +35,16 @@ class TlvOverviewCanvas(TlvScaleCanvas):
     def __init__(self, tlvController, master=None, **kw):
         super().__init__(tlvController, master, **kw)
 
-    def draw(self, startTimestamp, scale, specificDate, refIso, srtSections):
+    def draw(
+        self,
+        startTimestamp,
+        scale,
+        specificDate,
+        refIso,
+        srtSections,
+        background,
+    ):
+        self['background'] = background
         self.delete("all")
         if not specificDate:
             if refIso is None:
@@ -52,6 +61,7 @@ class TlvOverviewCanvas(TlvScaleCanvas):
             windowMarkStart + windowMarkWidth,
             self.CANVAS_HEIGHT,
             fill=prefs['color_window_mark'],
+            width=0,
         )
 
         #--- Draw the overview scale.
@@ -102,7 +112,7 @@ class TlvOverviewCanvas(TlvScaleCanvas):
 
         #--- Draw the section marks.
         for section in srtSections:
-            timestamp, durationSeconds, __, __, __ = section
+            timestamp, durationSeconds, __, __, __, sectionColor = section
             xStart = (timestamp - startTimestamp) / scale
             xEnd = (timestamp - startTimestamp + durationSeconds) / scale
             if xEnd - xStart < self.OV_SC_X_MIN:
@@ -113,6 +123,6 @@ class TlvOverviewCanvas(TlvScaleCanvas):
                 xEnd,
                 self.OV_SC_Y_POS,
                 width=self.OV_SC_THICKNESS,
-                fill=prefs['color_section_mark'],
+                fill=sectionColor,
             )
 

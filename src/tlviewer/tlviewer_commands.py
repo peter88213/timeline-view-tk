@@ -30,7 +30,7 @@ class TlviewerCommands:
             message='Timeline viewer',
             detail=__doc__,
             title=_('About Timeline viewer'),
-            )
+        )
 
     def bind_events(self):
         # Bind the commands to the controller.
@@ -83,7 +83,7 @@ class TlviewerCommands:
             answer = messagebox.askyesnocancel(
                 title=_('Close'),
                 message=_('Save changes?'),
-                )
+            )
             if answer is None:
                 return
 
@@ -97,8 +97,8 @@ class TlviewerCommands:
     def create_project(self, event=None):
         if self.mdl.isModified:
             answer = messagebox.askyesnocancel(
-            title=_('New'),
-            message=_('Save changes?'),
+                title=_('New'),
+                message=_('Save changes?'),
             )
             if answer is None:
                 return
@@ -113,8 +113,8 @@ class TlviewerCommands:
         filePath = filedialog.asksaveasfilename(
             filetypes=self.filetypes,
             defaultextension=self.defaultFileClass.EXTENSION,
-            initialdir=initDir
-            )
+            initialdir=initDir,
+        )
         if not filePath:
             return
 
@@ -125,7 +125,7 @@ class TlviewerCommands:
         if messagebox.askyesno(
             title=_('Project created'),
             message=_('Open the file for data entry?'),
-            ):
+        ):
             self.open_project_file()
 
     def disable_undo_button(self, event=None):
@@ -143,8 +143,8 @@ class TlviewerCommands:
     def open_project(self, event=None):
         if self.mdl.isModified:
             answer = messagebox.askyesnocancel(
-            title=_('Open'),
-            message=_('Save changes?'),
+                title=_('Open'),
+                message=_('Save changes?'),
             )
             if answer is None:
                 return
@@ -167,8 +167,8 @@ class TlviewerCommands:
     def open_project_file(self, event=None):
         if self.mdl.isModified:
             answer = messagebox.askyesnocancel(
-            title=_('Open project file'),
-            message=_('Save changes?'),
+                title=_('Open project file'),
+                message=_('Save changes?'),
             )
             if answer is None:
                 return
@@ -198,7 +198,7 @@ class TlviewerCommands:
             filetypes=self.filetypes,
             defaultextension=self.defaultFileClass.EXTENSION,
             initialdir=initDir
-            )
+        )
         if filePath:
             self.prjFilePath = filePath
             self.save_project()
@@ -213,5 +213,5 @@ class TlviewerCommands:
                     self.root.title(),
                     message=_('Cannot write file'),
                     detail=str(ex),
-                    )
+                )
 

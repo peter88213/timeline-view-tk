@@ -1,6 +1,6 @@
 """Provide a tk canvas for section display.
 
-Copyright (c) 2025 Peter Triesberger
+Copyright (c) Peter Triesberger
 For further information see https://github.com/peter88213/nv_tlview
 License: GNU GPLv3 (https://www.gnu.org/licenses/gpl-3.0.en.html)
 """
@@ -26,7 +26,6 @@ class TlvSectionCanvas(tk.Canvas):
     def __init__(self, tlvController, master=None, **kw):
         super().__init__(master, cnf={}, **kw)
         self._tlvCtrl = tlvController
-        self['background'] = prefs['color_section_background']
         self.yMax = 0
 
         # Variables for mouse drag operations.
@@ -43,7 +42,14 @@ class TlvSectionCanvas(tk.Canvas):
         self.delete(self._indicator)
         self.delete(self._indicatorText)
 
-    def draw(self, startTimestamp, scale, srtSections, minDist):
+    def draw(
+        self,
+        startTimestamp,
+        scale, srtSections,
+        minDist,
+        background,
+    ):
+        self['background'] = background
         self.delete("all")
         self.yMax = (len(srtSections) + 2) * self.SC_EVENT_DIST_Y
         yStart = self.SC_EVENT_DIST_Y
@@ -51,7 +57,14 @@ class TlvSectionCanvas(tk.Canvas):
         yPos = yStart
         labelEnd = 0
         for section in srtSections:
-            timestamp, durationSeconds, title, timeStr, sectionId = section
+            (
+                timestamp,
+                durationSeconds,
+                title,
+                timeStr,
+                sectionId,
+                sectionColor,
+            ) = section
             xStart = (timestamp - startTimestamp) / scale
 
             # Cascade sections.
@@ -68,8 +81,8 @@ class TlvSectionCanvas(tk.Canvas):
                 (xEnd, yPos + self.SC_MARK_HALF),
                 (xEnd + self.SC_MARK_HALF, yPos),
                 (xEnd, yPos - self.SC_MARK_HALF),
-                fill=prefs['color_section_mark'],
-                tags=sectionId
+                fill=sectionColor,
+                tags=sectionId,
             )
             self.tag_bind(
                 sectionMark,

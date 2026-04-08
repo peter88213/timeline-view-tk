@@ -21,6 +21,7 @@ class TlvSection:
             lastsMinutes=None,
             lastsHours=None,
             lastsDays=None,
+            color=None,
             ):
         if on_element_change is None:
             self.on_element_change = self.do_nothing

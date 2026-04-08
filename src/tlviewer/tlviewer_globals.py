@@ -8,7 +8,6 @@ from pathlib import Path
 
 from tlv.tlv_locale import _
 
-settings = {}
 HELP_URL = _('https://peter88213.github.io/timeline-view-tk/help/')
 HOME_URL = 'https://github.com/peter88213/timeline-view-tk/'
 

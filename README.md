@@ -62,7 +62,7 @@ There is a [German language pack](https://github.com/peter88213/tlviewer_de) to 
 
 ### Default: Executable Python zip archive
 
-Download the latest release [timeline_viewer_v0.10.0.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.pyzw)
+Download the latest release [timeline_viewer_v0.10.0.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.pyzw) (49 KB)
 
 - Launch *timeline_viewer_v0.10.0.pyzw* by double-clicking (Windows/Linux desktop),
 - or execute `python timeline_viewer_v0.10.0.pyzw` (Windows), resp. `python3 timeline_viewer_v0.10.0.pyzw` (Linux) on the command line.
@@ -81,7 +81,7 @@ the zip file.
 
 ### Alternative: Zip file
 
-The package is also available in zip format: [timeline_viewer_v0.10.0.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.zip)
+The package is also available in zip format: [timeline_viewer_v0.10.0.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.zip) (50 KB)
 
 - Extract the *timeline_viewer_v0.10.0* folder from the downloaded zipfile "timeline_viewer_v0.10.0.zip".
 - Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 

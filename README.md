@@ -83,7 +83,7 @@ Download the latest release [timeline_viewer_v0.10.0.pyzw](https://github.com/pe
 The package is also available in zip format: [timeline_viewer_v0.10.0.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.zip) (50 KB)
 
 - Extract the *timeline_viewer_v0.10.0* folder from the downloaded zipfile "timeline_viewer_v0.10.0.zip".
-- Move into this new folder and launch *setup.pyw* by double-clicking (Windows/Linux desktop), 
+- Move into this new folder and launch *setup.pyw* by double-clicking (Windows desktop), 
 - or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
 
 

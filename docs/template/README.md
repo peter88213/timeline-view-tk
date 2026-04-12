@@ -64,19 +64,18 @@ There is a [German language pack](https://github.com/peter88213/tlviewer_de) to 
 
 Download the latest release [timeline_viewer_v$Version.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v$Version.pyzw) ($PyzSize)
 
-- Launch *timeline_viewer_v$Version.pyzw* by double-clicking (Windows/Linux desktop),
+- Launch *timeline_viewer_v$Version.pyzw* by double-clicking (Windows desktop),
 - or execute `python timeline_viewer_v$Version.pyzw` (Windows), resp. `python3 timeline_viewer_v$Version.pyzw` (Linux) on the command line.
 
-#### Important
-
-Many web browsers recognize the download as an executable file and offer to open it immediately. 
-This starts the installation.
-
-However, depending on your security settings, your browser may 
-initially  refuse  to download the executable file. 
-In this case, your confirmation or an additional action is required. 
-If this is not possible, you have the option of downloading 
-the zip file. 
+> [!IMPORTANT]
+> Many web browsers recognize the download as an executable file and offer to open it immediately. 
+> This starts the installation under Windows.
+> 
+> However, depending on your security settings, your browser may 
+> initially  refuse  to download the executable file. 
+> In this case, your confirmation or an additional action is required. 
+> If this is not possible, you have the option of downloading 
+> the zip file. 
 
 
 ### Alternative: Zip file

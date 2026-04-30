@@ -1,10 +1,4 @@
-[![Download the latest release](docs/img/download-button.png)](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.pyzw)
-[![Changelog](docs/img/changelog-button.png)](docs/changelog.md)
-[![Feedback](docs/img/feedback-button.png)](https://github.com/peter88213/timeline-view-tk/discussions)
-[![Online help](docs/img/help-button.png)](https://peter88213.github.io/timeline-view-tk/help/)
-
-
-# ![](docs/img/tlv32.png) timeline-view-tk
+# ![](docs/img/tlv32.png) timeline-view-tk has moved to [Codeberg](https://codeberg.org/peter88213/timeline-view-tk)
 
 A timeline viewer programmed with Python, using tkinter.
 
@@ -37,55 +31,6 @@ The *tlv* class library is also used for the
 and for the 
 [yWriter Timeline viewer](https://github.com/peter88213/yw_tlview)
 for example.
-
-
-## Translations
-
-There is a [German language pack](https://github.com/peter88213/tlviewer_de) to be installed separately. 
-
-
-## Requirements
-
-- Windows or Linux. Mac OS support is experimental.
-- [Python](https://www.python.org/) version 3.7+. 
-
----
-
-- [Changelog](docs/changelog.md)
-- [User guide (English)](https://peter88213.github.io/timeline-view-tk/help/)
-- [User guide (German)](https://peter88213.github.io/tlviewer_de/help/)
-- [Feedback](https://github.com/peter88213/timeline-view-tk/discussions)
-
----
-
-## Download and install
-
-### Default: Executable Python zip archive
-
-Download the latest release [timeline_viewer_v0.10.0.pyzw](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.pyzw) (49 KB)
-
-- Launch *timeline_viewer_v0.10.0.pyzw* by double-clicking (Windows desktop),
-- or execute `python timeline_viewer_v0.10.0.pyzw` (Windows), resp. `python3 timeline_viewer_v0.10.0.pyzw` (Linux) on the command line.
-
-> [!IMPORTANT]
-> Many web browsers recognize the download as an executable file and offer to open it immediately. 
-> This starts the installation under Windows.
-> 
-> However, depending on your security settings, your browser may 
-> initially  refuse  to download the executable file. 
-> In this case, your confirmation or an additional action is required. 
-> If this is not possible, you have the option of downloading 
-> the zip file. 
-
-
-### Alternative: Zip file
-
-The package is also available in zip format: [timeline_viewer_v0.10.0.zip](https://github.com/peter88213/timeline-view-tk/raw/main/dist/timeline_viewer_v0.10.0.zip) (50 KB)
-
-- Extract the *timeline_viewer_v0.10.0* folder from the downloaded zipfile "timeline_viewer_v0.10.0.zip".
-- Move into this new folder and launch *setup.pyw* by double-clicking (Windows desktop), 
-- or execute `python setup.pyw` (Windows), resp. `python3 setup.pyw` (Linux) on the command line.
-
 
 ---
 
